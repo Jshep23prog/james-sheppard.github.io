@@ -69,7 +69,10 @@ E
     //force string to lowercase
   
     //using replace('','-') to convert space to dash
-    return string.toLowerCase().replace(' ','-');
+    //init a var to store array
+    var split = string.split(' ');
+    //join and lowercase array
+    return split.join('-').toLowerCase();
     // YOUR CODE ABOVE HERE //
 }
 
@@ -87,7 +90,21 @@ E
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+/*
+I string, single character
+O true or false
+C split the string into an array so we can for loop and determine if char == string[0]
+E toLowerCase to prevent Capital letter confusion
+*/
+// start by init a storage var splitting sting into letter array  
+var store = string.split('');
+ //use if else to determine if the first of the new array equals the char
+  if (store[0] === char || store[0].toLowerCase() === char){ //since case insensitive, we should use an or statement to determine if either capital or lowercase works
+    return true;
+  } else {
+    return false;
+  }
+   
     
 
     // YOUR CODE ABOVE HERE //
@@ -107,8 +124,15 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
-
+//similar to the code from begins with except we can use .length - 1 to produce desired result
+//init storage var and split param into array
+var store = string.split('')
+//now we can if else using an or statement and char.toLowerCase for case insensitivity
+if (store.length -1 === char || store[store.length -1] === char.toLowerCase()){
+    return true;
+} else {
+  return false;
+}
 
     // YOUR CODE ABOVE HERE //
 }
