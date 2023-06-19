@@ -163,8 +163,11 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
-
+    var store = [];
+    for (var i = 0; i < args.length; i++){
+        store += args[i].split(' ').join(' ') + ' ';
+    }
+    return store;
     // YOUR CODE ABOVE HERE //
 }
 
