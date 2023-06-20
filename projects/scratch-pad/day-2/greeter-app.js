@@ -35,7 +35,15 @@
 
 function greeter(hour) {
     // YOUR CODE BELOW HERE //
-    
+    if (hour === 0 || hour <= 11) { // using an or operator to get hour range where condition is met
+        console.log('Good Morning!'); //if true log
+    } else if (hour === 12 || hour <= 16) { //same use or operator to get hour range
+        console.log('Good Afternoon!'); //if true log
+    } else if (hour <= 21) { //alternately, since we are in number order, we can just jave one conditional statement that will return true
+        console.log('Good Evening!'); //log if true
+    } else { //else statement for any number over 21
+        console.log('Good Night!'); //log if every other condition is false
+    }
     
     
     
