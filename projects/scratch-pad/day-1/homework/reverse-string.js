@@ -21,6 +21,19 @@
 
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
+    //init storage array
+    var store = [];
+    
+
+    //we need to access individual letters so the split method should be used
+    //we need to loop throug the input with a for loop and then unshift each index so it is logged backwards
+    for (var i = 0; i < input.length; i++){
+      store.unshift(input[i]);
+  }
+  return store.join('');
+  
+  
+  
     
     
     
