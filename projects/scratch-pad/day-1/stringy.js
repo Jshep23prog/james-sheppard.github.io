@@ -144,7 +144,9 @@ if (store.length -1 === char || store[store.length -1] === char.toLowerCase()){
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-    var conc = stringOne.concat(' ', stringTwo);
+    //init a var to store and return stingOne.concat
+    var conc = stringOne.concat(stringTwo);
+    //return conc
     return conc;
 
     // YOUR CODE ABOVE HERE //
@@ -163,10 +165,14 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
+    //init storage array
     var store = [];
+    //we want to program this function for potentially more than two params, so a for loop is justified
     for (var i = 0; i < args.length; i++){
+        //push to storage array
         store.push(args[i]);
     }
+    //return array with join
     return store.join('');
     // YOUR CODE ABOVE HERE //
 }
@@ -182,7 +188,13 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+//determine which string is longer. Use an if statement with .length to compare
+if (stringOne.length > stringTwo.length) {
+    //return stringOne else return stringTwo
+    return stringOne;
+} else {
+    return stringTwo;
+}
 
 
     // YOUR CODE ABOVE HERE //
@@ -197,7 +209,15 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+// one can determing alphabetical order with math operators
+//since we have 3 outputs, if else statement is warranted
+    if (stringOne < stringTwo) {
+        return 1;
+    } else if (stringOne > stringTwo) {
+        return -1;
+    } else {
+        return 0;
+    }
 
 
     // YOUR CODE ABOVE HERE //
@@ -213,7 +233,15 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+//very similar to sortAscending except we flip the math operators
+//since we have 3 outputs, if else statement is warranted
+if (stringOne > stringTwo) {
+    return 1;
+} else if (stringOne < stringTwo) {
+    return -1;
+} else {
+    return 0;
+}
 
 
 
