@@ -73,7 +73,14 @@ function printObjectKeys(object) {
  */
 function getObjectValues(object) {
   // YOUR CODE BELOW HERE //
-  
+  //similar to the getObjectKeys except we are now getting the values
+   // to loop through the keys, one must use a for loop with a var key in object
+  //we need to return an array, so init storage array
+  var array = [];
+  for (var key in object) {
+    array.push(object[key]) // bracket notation to denote value
+  }
+  return array; //return array as specified
   
   
   
@@ -86,7 +93,10 @@ function getObjectValues(object) {
  */
 function printObjectValues(object) {
   // YOUR CODE BELOW HERE //
-  
+  //similar to the above problem, except instead of pushing to an array, we simply console.log each iteration
+  for (var key in object) {
+    console.log(object[key]); //  we are logging values not keys so bracket notation is necessary
+  }
   
   
   
@@ -98,7 +108,9 @@ function printObjectValues(object) {
  */
 function getObjectLength(object) {
   // YOUR CODE BELOW HERE //
-  
+  // for this we have to retun number of key/value pairs
+  //we use Object.keys().length to determine that data
+  return Object.keys(object).length;
   
   
   
