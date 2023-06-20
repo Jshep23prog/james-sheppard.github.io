@@ -144,8 +144,8 @@ if (store.length -1 === char || store[store.length -1] === char.toLowerCase()){
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
+    var conc = stringOne.concat(' ', stringTwo);
+    return conc;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -165,9 +165,9 @@ function join(stringOne, stringTwo) {
     var args = Array.from(arguments);
     var store = [];
     for (var i = 0; i < args.length; i++){
-        store += args[i].split(' ').join(' ') + ' ';
+        store.push(args[i]);
     }
-    return store;
+    return store.join('');
     // YOUR CODE ABOVE HERE //
 }
 
