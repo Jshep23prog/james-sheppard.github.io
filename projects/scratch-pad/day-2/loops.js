@@ -12,7 +12,10 @@
  */
 function printArrayValues(array) {
   // YOUR CODE BELOW HERE //
-  
+  //loop through an array with for loop and .length property
+  for (var i = 0; i < array.length; i++) { // we are incrementing until .length limit
+    console.log(array[i]); // console.log array with index bracket
+  }
   
   
   
@@ -25,8 +28,10 @@ function printArrayValues(array) {
  */
 function printArrayValuesInReverse(array) {
   // YOUR CODE BELOW HERE //
-  
-  
+  //similar to our above function except this time instead of i = 0, i will equal array.length - 1
+  for (var i = array.length -1; i >= 0; i--) { // this will allow us to decrement to the 0 threshold
+    console.log(array[i]); // log array index
+  }
   
   
   // YOUR CODE ABOVE HERE //
@@ -37,9 +42,13 @@ function printArrayValuesInReverse(array) {
  */
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
+  // to loop through the keys, one must use a for loop with a var key in object
+  //we need to return an array, so init storage array
+  var array = [];
+  for (var key in object) {
+    array.push(key) // this one got me until I realized they want key not value, so removed bracket notation
+  }
+  return array; //return array as specified
   
   // YOUR CODE ABOVE HERE //
 }
@@ -50,8 +59,10 @@ function getObjectKeys(object) {
  */
 function printObjectKeys(object) {
   // YOUR CODE BELOW HERE //
-  
-  
+  //similar to the above problem, except instead of pushing to an array, we simply console.log each iteration
+    for (var key in object) {
+      console.log(key); // again, we are logging keys, not values
+    }
   
   
   // YOUR CODE ABOVE HERE //
