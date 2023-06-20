@@ -123,7 +123,13 @@ function getObjectLength(object) {
  */
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
-  
+  //this one is interesting. we can use Object.values to convert values to an array and then create a for loop
+  //init a storage var
+  var store = Object.values(object);
+  //create a for loop using store .length -1 and decrement
+  for (var i = store.length - 1; i >= 0; i--){ //making sure to >= 0 so it prints the first value
+    console.log(store[i]); //log value index
+  }
   
   
   
