@@ -130,9 +130,9 @@ function allStringsPass(strings, test) {
        if (test(strings[i]) === false) {
        stor.push(strings[i]);
     }
-    return stor;
+    
 }
-    if (stor === []) {
+    if (stor.length === 0) {
         return true;
     } else {
         return false;
