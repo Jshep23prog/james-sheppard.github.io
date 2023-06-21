@@ -94,7 +94,16 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) { // modify is a function designed to "modify" a single string (toUppercase?)
     // YOUR CODE BELOW HERE //
-    
+    //init a storage array
+    var store = [];
+    //we need to loop through strings and then pass each sting into the modify function
+    //start with a for loop
+    for (var i = 0; i < strings.length; i++){
+        //loop through each index and push into storage array. within the push function we can invoke the modify function
+        //uning the indexed string as an arguement we still need to modify the string so toUpperCase()
+        store.push(modify(strings[i].toUpperCase()))
+    }
+    return store;
     
     
     
@@ -110,9 +119,24 @@ function modifyStrings(strings, modify) { // modify is a function designed to "m
  * 
  * TIP: You need to loop over the Strings, right? And pass them to the test?
  */
-function allStringsPass(strings, test) { // test  is a function designed to test a single string (similar to filter nums) (will return true or false)
+function allStringsPass(strings, test) { 
+    // test  is a function designed to test a single string (similar to filter nums)
+    // (will return true or false)
     // YOUR CODE BELOW HERE //
-    
+    //init storace array
+    var stor = [];
+    //start with a for loop
+    for (var i = 0; i < strings.length; i++){
+       if (test(strings[i]) === false) {
+       stor.push(strings[i]);
+    }
+    return stor;
+}
+    if (stor === []) {
+        return true;
+    } else {
+        return false;
+    }
     
     
     
