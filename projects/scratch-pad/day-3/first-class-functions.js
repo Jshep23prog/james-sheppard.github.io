@@ -13,7 +13,7 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    return function(value){
+    return function test (value){ //first we have to return a function and within that function test the value
         return value > base;
     }
     
@@ -27,8 +27,10 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
+    //first we have to return a function and within that function test a value
+    return function test (value) {
+        return value < base;
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -41,7 +43,18 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
+    //return a function
+    return function test (str) { 
+        //we want to test if the first letter of str equals startsWith so index bracket
+        if (str[0] === startsWith.toUpperCase()) {
+            return true; //for accuracy we will switch startsWith to lowercase to make func case insenitive
+        } else if (str[0] === startsWith.toLowerCase()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
     
     
     
@@ -55,6 +68,16 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
+    //similar application as the previous except now we will use .length - 1
+    return function test (str) {
+        if (str[str.length - 1] === endsWith.toUpperCase()){
+            return true;
+        } else if (str[str.length - 1] === endsWith.toLowerCase()) {
+            return true;
+        } else{
+            return false;
+        }
+    }
     
     
     
