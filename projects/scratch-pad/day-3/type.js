@@ -14,7 +14,11 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
-    
+    if (Array.isArray(value) === true) {
+        return true;
+    } else {
+        return false;
+    }
     
     
     
@@ -31,7 +35,22 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    
+    // to do this we will need to eliminate the outliers in the typeof (null, Date, Array)
+    //we should do it sequentially with the outliers
+    //first up, Array.isArray()
+    if (Array.isArray(value) === true) {
+        return false; // return false if array
+        //next is to see if the value is null NOT TYPEOF because it will produce an object
+    } else if (value === null) {
+         return false; // if null return false
+         //then check the last outlier, Date. This can be done with instanceof
+    } else if (value instanceof Date) {
+        return false; //if date, return false
+        //this just leaves us with the ability to test all the data types without the outliers getting in our way
+    } else if (typeof value === 'object') {
+        return true;
+        //everything else, return false
+    } else return false;
     
     
     
@@ -46,7 +65,19 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    
+    //similar to the previous function, but return true for Object and array
+    //start with the outliers isArray, null, Date
+    if (Array.isArray(value) === true) {
+        return true;
+    } else if (value === null) {
+        return false;
+    } else if (value instanceof Date) {
+        return false;
+    } else if (typeof value === 'object') {
+        return true;
+    } else {
+        return false;
+    }
     
     
     
@@ -74,6 +105,28 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
+    //similar to our previous two excercises, albeit a bit more pedantic. It's okay I appreciate the repetition
+    //start with ourliers Array, Null, Date
+    if (Array.isArray(value)) {
+        return 'array';
+    } else if (value === null) { //this one threw an error because I used typeof
+        return 'null';
+    } else if (value instanceof Date) {
+        return 'date';
+        //now we can do the other data types
+    } else if (typeof value === 'object') {
+        return 'object';
+    } else if (typeof value === 'undefined') {
+        return 'undefined';
+    } else if (typeof value === 'number') {
+        return 'number';
+    } else if (typeof value === 'boolean') {
+        return 'boolean';
+    } else if (typeof value === 'string') {
+        return 'string';
+    } else {
+        return 'function';
+    }
     
     
     
