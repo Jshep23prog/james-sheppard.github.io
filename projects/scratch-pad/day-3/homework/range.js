@@ -23,8 +23,25 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
+    //easiest way would be to use a for loop with a storage array
+    //init storage array
+    var arr = [];
+    //we have to constraints: if end is greater than start, list parameters in order
+    //if start is greater than end list in reverse order.
+    if (end > start) {
+    //for loop using start and end as the values
+    for (var i = start; i <= end; i++) { //increment
+        arr.push(i); // push to storage array
+    }
+    return arr; //return array
+    //else if start is greater than end, do it in reverse
+} else if (start > end){
+    // another for loop that decrements
+    for (var i = start; i >= end; i--) {//decrement
+        arr.push(i);
+    }
+    return arr;
+}
     
     
     // YOUR CODE GOES ABOVE HERE //
