@@ -75,9 +75,10 @@ function makeContactList() {
 
         },
         removeContact: function(contact){
+            return contacts.splice(contact[contact.id], 1);
 
         },
-        printAllContactNames: function(){
+        printAllContactNames: function(contacts){
 
         }
     }
