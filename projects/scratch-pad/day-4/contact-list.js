@@ -78,12 +78,12 @@ function makeContactList() {
             return contacts.splice(contact[contact.id], 1);
 
         },
-        printAllContactNames: function(contacts){
+        printAllContactNames: function () {
             var prints = [];
             for (var i = 0; i < contacts.length; i++) {
                 prints.push(contacts[i].nameFirst + " " + contacts[i].nameLast)
             }
-            return prints.join('\r\n');
+            return prints.join('\n');
 
         }
     }
