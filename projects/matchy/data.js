@@ -88,7 +88,23 @@ console.log(animals.length);
 //////////////////////////////////////////////////////////////////////
 // Step 7 - Making Friends ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+var friends = [];
+//we need a list, so use array which is an ordered list
+function getRandom(arr) {
+  var randomIndex = Math.floor(Math.random() * arr.length);
+  var item = arr[randomIndex];
+  return item;
+}
+// console.log(getRandom(animals));
+// var random = getRandom(animals);
+// friends.push(random);
+// console.log(friends['name']);
+// //friends.push(getRandom(animals.name));
+// //friends.push(random['name']);
 
+// console.log(friends);
+
+// animals['friends'] = friends;
 
 
 /**
