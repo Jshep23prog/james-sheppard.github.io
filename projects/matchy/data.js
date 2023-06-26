@@ -42,9 +42,9 @@ console.log(animal);
  * Step 4 - Review
  *
  * 1. What are the different ways you can access properties on objects?
- *
+ *  You can use bracket notation and dot notation
  * 2. What are the different ways of accessing elements on arrays?
- *
+ *  Bracket notation to access index values you can also loop through an array to access it's values
  * *******************************************************************
  */
 
