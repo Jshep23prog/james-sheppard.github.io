@@ -60,7 +60,29 @@ console.log(animal);
 //////////////////////////////////////////////////////////////////////
 // Step 6 - A Collection of Animals //////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+var animals = [];
+animals.push(animal);
+console.log(animals);
+var duck = {
+   species: 'duck', 
+   name: 'Jerome', 
+   noises: ['quack', 'honk', 'sneeze', 'woosh'] };
+animals.push(duck);
+console.log(animals);
+var bird = {
+  species: 'bird',
+  name: 'Nico',
+  noises: ['chirp', 'screech']
+};
+animals.push(bird);
+var dog = {
+  species: 'dog',
+  name: 'Riley',
+  noises: ['bark', 'growl', 'whimper']
+};
+animals.push(dog);
+console.log(animals);
+console.log(animals.length);
 
 
 //////////////////////////////////////////////////////////////////////
