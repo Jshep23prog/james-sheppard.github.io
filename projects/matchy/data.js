@@ -95,6 +95,9 @@ function getRandom(arr) {
   var item = arr[randomIndex];
   return item;
 }
+var random = getRandom(animals);
+animals[0]['friends'] = friends;
+console.log(animals);
 // console.log(getRandom(animals));
 // var random = getRandom(animals);
 // friends.push(random);
