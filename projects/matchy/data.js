@@ -91,10 +91,10 @@ console.log(animals.length);
 var friends = [];
 //we need a list, so use array which is an ordered list
 function getRandom(arr) {
-  return arr[(Math.floor(Math.random() * arr.length))];
+  return Math.floor(Math.random() * arr.length);
  };
  var friendly = getRandom(animals);
- friends.push(friendly.name);
+ friends.push(animals[friendly].name);
 console.log(friends);
 animals[0]['friends'] = friends;
 console.log(animals);
