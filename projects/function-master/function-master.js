@@ -72,9 +72,17 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 // Function 6 - Capitalize All Words /////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take a string of words and return a string with all the words capitalized 
+//similar to function 6, but instead we will use a for loop to loop through every word
 function capitalizeAllWords(string) {
-    
+    //we need to split our string into an array
+    var words = string.split(" ");
+    //for loop
+    for (var i = 0; i < words.length; i++) {
+        //loop through and make the word[i] = to the first letter capitalized concat with a sliced remainder of word[i]
+        words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+    }
+    return words.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
