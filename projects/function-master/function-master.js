@@ -110,14 +110,13 @@ function profileInfo(object) {
 // if there are no noises return 'there are no noises'"
 function maybeNoises(object) {
     //if else chain starting with the empty array so it doesn't throw an error
-    if (object.noises.length === 0) {
+    if (Object.keys(object).length === 0) { //first test for empty obj
         return 'there are no noises';
-    } else if (object.noises.length > 0) {
-        return object.noises.join(" ");
-    } else {
-        return 'there are no noises'
-    }
-
+      }  else if (object.noises.length === 0) { //then test for empty key value
+            return 'there are no noises';
+        } else if (object.noises.length > 0) { // then return joined array
+            return object.noises.join(" ");
+        } 
 }
 
 //////////////////////////////////////////////////////////////////////
