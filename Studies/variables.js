@@ -111,7 +111,7 @@ So a variable declared in a block with let  is only available for use within tha
    if (times > 3) {
         let hello = "say Hello instead";
         console.log(hello);// "say Hello instead"
-    }
+    } 
    console.log(hello) // hello is not defined
 
 We see that using hello outside its block (the curly braces where it was defined) returns an error. 
