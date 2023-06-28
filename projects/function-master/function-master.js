@@ -50,17 +50,23 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 // Function 4 - Array or Object //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take one argument and return 'array' if its an array and 'object' if its an object"
 function arrayOrObject(collection) {
-    
+    //should use Array.isArray to determine if array. if not return object
+    if (Array.isArray(collection)) {
+        return 'array';
+    } else {
+        return 'object';
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 5 - Capitalize Word //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take a string of one word, and return the word with its first letter capitalized
 function capitalizeWord(string) {
-    
+    //use .charAt(0), .toUpperCase() and .slice(1) -removes first letter of string methods to make a very dry code
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 //////////////////////////////////////////////////////////////////////
