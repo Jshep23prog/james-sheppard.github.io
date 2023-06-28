@@ -1,16 +1,25 @@
 //////////////////////////////////////////////////////////////////////
 // Function 1 - Object Values ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//should take in an object and return values in array
 function objectValues(object) {
+    //should return array so init a storage array
+    var store = [];
+    //for var in obj
+    for (var key in object) {
+        //should add values to array in each loop
+        store.push(object[key]); 
+    }
+    return store;
 
 } 
 
 //////////////////////////////////////////////////////////////////////
 // Function 2 - Keys to String ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take an object and return all its keys in a string each separated with a space
 function keysToString(object) {
+    return Object.keys(object).join(' ');
 
 }
 
@@ -19,8 +28,24 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
+    var store = [];
+    //for var in loop
+    for (var key in object) {
+     
+        //should add values to array in each loop
+        store.push(object[key]); 
     
-}
+    }
+  var string = []
+  for (var i = 0; i < store.length; i++) {
+    if (typeof store[i] === 'string'){
+      string.push(store[i]);
+    }
+  }
+    return string.join(' ');
+
+} 
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 4 - Array or Object //////////////////////////////////////
