@@ -88,24 +88,35 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 // Function 7 - Welcome Message //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take an object with a name property and return 'Welcome <Name>!
 function welcomeMessage(object) {
-
+    //return welcome and ! string concated with obj.name with capitalizeletter function
+    return 'Welcome ' + object.name.charAt(0).toUpperCase() + object.name.slice(1) + '!';
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 8 - Profile Info /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take an object with a name an a species and return '<Name> is a <Species>'"
 function profileInfo(object) {
-
+    //similar to welcome message just more to concat
+    return object.name.charAt(0).toUpperCase() + object.name.slice(1) + ' is a ' + object.species.charAt(0).toUpperCase() + object.species.slice(1)
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 9 - Maybe Noises /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take an object, if this object has a noises array return them as a string separated by a space,
+// if there are no noises return 'there are no noises'"
 function maybeNoises(object) {
+    //if else chain starting with the empty array so it doesn't throw an error
+    if (object.noises.length === 0) {
+        return 'there are no noises';
+    } else if (object.noises.length > 0) {
+        return object.noises.join(" ");
+    } else {
+        return 'there are no noises'
+    }
 
 }
 
