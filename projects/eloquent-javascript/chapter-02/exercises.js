@@ -21,12 +21,12 @@ function fizzBuzz(num, end) {
   //start with a for loop
   for (var i = num; i <= end; i++) {
     //if else chain statement starting with an and conditional so FIZZBUZZ is triggered instead of just fizz or buzz
-    if (i % 3 === 0 && i % 5 === 0) {
+    if (i % 3 === 0 && i % 5 === 0) { //if divisible by 3 AND 5 return fizzbuzz
       console.log('fizzbuzz');
-    } else if (i % 3 === 0) {
+    } else if (i % 3 === 0) { // if divisible by three log fizz
       console.log('fizz');
-    } else if (i % 5 === 0) {
-      console.log('buzz');
+    } else if (i % 5 === 0) { //if divisible by five log buzz
+      console.log('buzz'); //the capitalization I originally had threw errors
     } else {
       console.log(i);
     }
@@ -38,7 +38,26 @@ function fizzBuzz(num, end) {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {//requires a param
+function drawChessboard(num) {//requires a param
+  //we should init a storage string
+  var board = '';
+  //need two for loops so we can work in a 2D space
+  for (var i = 0; i < num; i++) { // in the outer loop we add a new line to every row
+    for (var j = 0; j < num; j++) { // in the inner loop we can add spaces or hashtags based on an if clause
+      if ((i + j) % 2 === 0) { //  this tripped me up for a bit. I was just doing j instead of i +j 
+        //j returned uniform columns and I needed alternating
+        board += ' ';
+      } else {
+        board += '#';
+      }
+
+    }
+    //outside of the inner loop we should add a new line with the forwardslash n
+    board += '\n';
+
+  }
+  //finally, important to console log board at the end of the loop
+  console.log(board);
 
 }
 
