@@ -14,8 +14,23 @@ for (var str = '#'; str.length <= num; str += '#'){
 ////////////////////////////////////////////////////////////////////////////////
 // fizzBuzz ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function fizzBuzz() {
+//Write a program that uses console.log to print all the numbers from 1 to 100, with two exceptions. 
+//For numbers divisible by 3, print "Fizz" instead of the number, 
+//and for numbers divisible by 5 (and not 3), print "Buzz" instead.
+function fizzBuzz(num, end) {
+  //start with a for loop
+  for (var i = num; i <= end; i++) {
+    //if else chain statement starting with an and conditional so FIZZBUZZ is triggered instead of just fizz or buzz
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log('fizzbuzz');
+    } else if (i % 3 === 0) {
+      console.log('fizz');
+    } else if (i % 5 === 0) {
+      console.log('buzz');
+    } else {
+      console.log(i);
+    }
+  }
   
 }
 
