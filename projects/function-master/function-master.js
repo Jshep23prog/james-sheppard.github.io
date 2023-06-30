@@ -226,7 +226,15 @@ return object; //return the updated object
 //Should take an object and an array of strings. 
 //Should remove any properties on <object> that are listed in <array>
 function removeProperties(object, array) {
-
+  
+   
+    for (var i = 0; i < array.length; i++){
+        if (object.hasOwnProperty(array[i])) {
+          delete object[array[i]];
+        
+      }
+    }
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
