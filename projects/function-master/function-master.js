@@ -171,25 +171,39 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+
 //Should take a name and a list of people, and return a list of all the names that <name> is not friends with
 function nonFriends(name, array) {
-     //init a storage arry to push enemies to
-     var list = [];  
-     var enemy = [];
-       //for loop to loop through array
-       for (var i = 0; i < array.length; i++){
-           //if conditional to check the object.friends and see if they match with name
-         if (array[i].name !== name && array[i].friends.length !== 0) {
-           list.push(array[i]);
-         }
-       }
-       //console.log(list);
-         for (var j = 0; j < list.length; j++) {
-           enemy.push(list[j].name)
-         }
-              
-         return enemy;
-}
+    //init a storage variable with local scope
+    let enemy = [];
+    //need a for loop with array.length
+    for (let i = 0; i < array.length; i++){
+        //init a storage varaiable with local scope
+       let exists = [];
+       //in this loop check if the name on the list !== name arguement
+          if (array[i].name !== name) {
+            //declare a friends variable with the value of the friends array
+         let friends = array[i].friends;
+         //nested for loop to loop through friends var array
+            for (let j = 0; j <friends.length; j++){
+                //if friends contain the name of arguement, push into exists array
+              if (friends[j] === name){
+                exists.push(friends[j]);
+              }
+            }       
+      }
+      //outisde of the if and other for loop, we can continue the rest of out original for loop
+      //test if there is no value in the exists array and also if the array's name doesn't match arguement 
+      if (exists.length === 0 && array[i].name !== name) {
+        //push into enemy arry 
+        enemy.push(array[i].name)
+      }
+    }
+      return enemy;
+    
+    
+   
+  }
 
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
