@@ -208,15 +208,23 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take an object, a key and a value. 
+//Should update the property <key> on <object> with new <value>. If <key> does not exist on <object> create it.
 function updateObject(object, key, value) {
-
+    //use the hasOwnProperty method
+    if (object.hasOwnProperty(key)) {
+        object[key] = value; // will update value of the key in that object
+    } else {
+         object[key]=value; // will create a new key and will assign value
+    }
+return object; //return the updated object
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take an object and an array of strings. 
+//Should remove any properties on <object> that are listed in <array>
 function removeProperties(object, array) {
 
 }
@@ -224,9 +232,13 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take an array and return an array with all the duplicates removed
+//I had to research some new methods
+//... spread syntax can be used when all elements from an array need to be included in a new array
+//Set is a collection of values that can occur only once. It is unique in the set's collection
 function dedup(array) {
-
+newArr = [...new Set(array)];//apply spread with set(arg)
+return newArr
 }
 
 //////////////////////////////////////////////////////////////////////
