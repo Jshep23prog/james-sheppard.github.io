@@ -2,32 +2,64 @@
 // min /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function min() {
+function min(num1, num2) {
+  //that takes two arguments and returns their minimum
+  return Math.min(num1, num2);
 
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // isEven //////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function isEven() {
+//Define a recursive function isEven corresponding to this description. 
+//The function should accept a single parameter (a positive, whole number) and return a Boolean.
+function isEven(num) {
+  //if statement with remainder 2 === 0 to determine if number is even
+  if (num % 2 === 0){
+    return true;
+  } else {
+    return false;
+  }
 
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // countChars //////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function countChars() {
-
+//Next, write a function called countChar that behaves like countBs, 
+//except it takes a second argument that indicates the character that is to be counted
+// (rather than counting only uppercase “B” characters). Rewrite countBs to make use of this new function.
+function countChars(string, letter) {
+//init count variable
+let count = 0
+//for loop to loop through string with string.length
+for (var i = 0; i < string.length; i++){
+  //if conditional to see if any of the iterations equal a capital B
+  if (string[i] === letter) {
+    //add a digit to count
+    count += 1;
+  }
+}
+return count;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // countBs /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function countBs() {
-
+//Write a function countBs that takes a string as its only argument and 
+//returns a number that indicates how many uppercase “B” characters there are in the string.
+function countBs(string) {
+//init count variable
+let count = 0
+//for loop to loop through string with string.length
+for (var i = 0; i < string.length; i++){
+  //if conditional to see if any of the iterations equal a capital B
+  if (string[i] === 'B') {
+    //add a digit to count
+    count += 1;
+  }
+}
+return count;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
