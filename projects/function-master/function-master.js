@@ -247,7 +247,17 @@ function removeProperties(object, array) {
 function dedup(array) {
 newArr = [...new Set(array)];//apply spread with set(arg)
 return newArr
-}
+};
+//Alternatively, I made a working code using a for lop and includes method to see if I could
+//function dupe (array) {
+    //   let store = [];
+    //   for (var i = 0; i < array.length; i++) {
+    //     if (array.includes(array[i]) && !store.includes(array[i])) {
+    //       store.push(array[i]);
+    //     }
+    //   }
+    //   return store;
+    // }
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
