@@ -93,12 +93,18 @@ _.typeOf = function(value){
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 _.first = function(array, number) {
-    if (Array.isArray(array) !== 'array') {
+    if (!Array.isArray(array) || number < 0) {
         return [];
-    } else if (number === null || number === NaN) {
+    } else if (isNaN(number) || number === null) {
         return array[0];
+    } else if (array.length < number) {
+        return array;
     } else {
-
+        let store = [];
+        for (var i = 0; i < number; i++) {
+            store.push(array[i])
+        }
+        return store;
     }
 }
 

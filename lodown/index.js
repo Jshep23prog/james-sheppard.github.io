@@ -34,3 +34,61 @@ function identity(value){
 }
 
 module.exports.identity = identity;
+
+/**
+ * Takes in a value and determines what type of data it is and outputs the value as a string
+ * @param {Any data type} value : Any value can be used including arrays, objects or functions 
+ *  
+ * @returns {string} value : Returns the type of data as a string of it's type
+ */
+_.typeOf = function(value){
+    if (Array.isArray(value)) {
+        return 'array';
+    } else if (value === null) {
+        return 'null';
+    } else if (typeof value === 'object'){
+        return 'object';
+    } else if (typeof value === 'string') {
+        return 'string'
+    } else if (typeof value === 'undefined') {
+        return 'undefined';
+    } else if (typeof value === 'number') {
+        return 'number';
+    } else if (typeof value === 'boolean') {
+        return 'boolean';
+    } else if (typeof value === 'function') {
+        return 'function';
+    }
+}
+
+module.exports.typeOf = typeOf
+
+/**
+ *  first: Takes in an array and a number and returns the range of array indexes indicated by the number
+ * 
+ * @param {Array} collection : Function takes in an input value.
+ * @param {Number} value : Function takes in a number
+ * @returns {Array} collection : Function returns array based on parameters
+ * Will retrun an empty array if array arguement is not an array or the number value is negative
+ * Will return the first index of the array if the number arguement is NaN or null
+ * Will return the array if the array length is less than the number
+ * Will return the number of array indexes denoted by the number arguement
+ *  
+ */
+_.first = function(array, number) {
+    if (!Array.isArray(array) || number < 0) {
+        return [];
+    } else if (isNaN(number) || number === null) {
+        return array[0];
+    } else if (array.length < number) {
+        return array;
+    } else {
+        let store = [];
+        for (var i = 0; i < number; i++) {
+            store.push(array[i])
+        }
+        return store;
+    }
+}
+
+module.exports.first = first;
