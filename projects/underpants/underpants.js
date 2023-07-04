@@ -236,12 +236,19 @@ _.each = function(collection, func){
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 _.unique = function(array) {
-    var store = [];
+    let store = [];
+    var result = [];
     for (var i = 0; i < array.length; i++){
-    store.push(_.indexOf(array, array[i]))
+      store.push(array[_.indexOf(array, array[i])])
+      }
+    console.log(store);
+    for (var j = 0; j < store.length; j++){
+      if (!result.includes(store[j])){
+      result.push(store[j])
     }
-    return store;
-}
+  }
+      return result;
+  }
 
 /** _.filter
 * Arguments:
