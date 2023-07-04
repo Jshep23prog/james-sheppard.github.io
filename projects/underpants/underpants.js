@@ -93,7 +93,7 @@ _.typeOf = function(value){
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 _.first = function(array, number) {
-    if (!Array.isArray(array) || number < 0) {
+    if (!Array.isArray(array)) {
         return [];
     } else if (isNaN(number) || number === null) {
         return array[0];
@@ -187,7 +187,7 @@ _.indexOf = function(array, value) {
 */
 _.contains = function(array, value) {
     //for loop to iterate through array and use a ternary operator
-    let store = []
+    let store = [];
     for (var i = 0; i < array.length; i++) {
        if (array[i] === value) {
         store.push(array[i]);
@@ -214,12 +214,17 @@ _.contains = function(array, value) {
 _.each = function(collection, func){
     //if collection is array
     if (Array.isArray(collection)) {
-        func(array[i], /current index/, /collection itself/);
+      for (var i = 0; i < collection.length; i++) {
+        func(collection[i], i, collection);
+      }
     } else {
+      for (var key in collection) {
+        func(collection[key], key, collection)
+      }
 
     }
-    //else collection is an object
 }
+
 
 /** _.unique
 * Arguments:
@@ -230,7 +235,13 @@ _.each = function(collection, func){
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
-
+_.unique = function(array) {
+    var store = [];
+    for (var i = 0; i < array.length; i++){
+    store.push(_.indexOf(array, array[i]))
+    }
+    return store;
+}
 
 /** _.filter
 * Arguments:
@@ -331,8 +342,39 @@ _.each = function(collection, func){
 * Examples:
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
+    _.every([1, 2, 3]); // => true
+    _.every([1, null, 3]) // false
 */
+//test function means return true or false
 
+_.every = function(collection, func) {
+
+    let passes = [];
+
+    //determine if collection is array
+    if (Array.isArray(collection)){
+        //determine if function wasnt't provided
+        if (func === undefined) {
+             for (let i = 0; i < collection.length; i++) {
+                if (!collection[i]){//test every value for truthy or falsey
+                    return false;
+                }
+             }
+        } else {
+            for (let i = 0; i < collection.length; i++) {
+                if (!func(collection[i], i, collection)) {//if result of invoking func is falsey
+                    return false;
+                }
+            }
+        }
+    } else { //else it is an object
+        if (func === defined){
+
+        }   else {
+
+        }// else it was
+    }
+};
 
 /** _.some
 * Arguments:

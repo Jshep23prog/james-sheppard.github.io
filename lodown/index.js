@@ -36,12 +36,12 @@ function identity(value){
 module.exports.identity = identity;
 
 /**
- * Takes in a value and determines what type of data it is and outputs the value as a string
+ * typeOf: Takes in a value and determines what type of data it is and outputs the value as a string
  * @param {Any data type} value : Any value can be used including arrays, objects or functions 
  *  
  * @returns {string} value : Returns the type of data as a string of it's type
  */
-_.typeOf = function(value){
+function typeOf(value){
     if (Array.isArray(value)) {
         return 'array';
     } else if (value === null) {
@@ -75,7 +75,7 @@ module.exports.typeOf = typeOf
  * Will return the number of array indexes denoted by the number arguement
  *  
  */
-_.first = function(array, number) {
+function first(array, number) {
     if (!Array.isArray(array) || number < 0) {
         return [];
     } else if (isNaN(number) || number === null) {
