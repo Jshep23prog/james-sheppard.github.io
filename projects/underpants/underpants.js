@@ -125,7 +125,21 @@ _.first = function(array, number) {
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-
+_.last = function(array, number) {
+    if (!Array.isArray(array) || number < 0) {
+        return [];
+    } else if (isNaN(number) || number === null) {
+        return array[array.length - 1];
+    } else if (array.length < number) {
+        return array;
+    } else {
+        let store = [];
+        for (var i = 1; i <= number; i++) {
+            store.push(array[i])
+        }
+        return store;
+    }
+}
 
 /** _.indexOf
 * Arguments:
@@ -142,6 +156,19 @@ _.first = function(array, number) {
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
+_.indexOf = function(array, value) {
+    //return the index of array that is the first occurance of value
+    //for loop with a return to break the loop and return the first occurance
+    for (var i = 0; i < array.length; i++){
+        if (array[i] === value) {
+            //return the index number
+            return i;
+        }
+         
+    }
+    //if nothing triggers the return index, return -1
+    return -1;
+}
 
 
 /** _.contains
@@ -158,7 +185,16 @@ _.first = function(array, number) {
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-
+_.contains = function(array, value) {
+    //for loop to iterate through array and use a ternary operator
+    let store = []
+    for (var i = 0; i < array.length; i++) {
+       if (array[i] === value) {
+        store.push(array[i]);
+       }
+    }
+    return (store[0] === value ? true : false);
+}
 
 /** _.each
 * Arguments:
