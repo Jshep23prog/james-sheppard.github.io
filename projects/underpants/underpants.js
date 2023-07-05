@@ -239,16 +239,12 @@ _.unique = function(array) {
     let store = [];
     var result = [];
     for (var i = 0; i < array.length; i++){
+      if (!store.includes(array[_.indexOf(array, array[i])])){
       store.push(array[_.indexOf(array, array[i])])
       }
-    console.log(store);
-    for (var j = 0; j < store.length; j++){
-      if (!result.includes(store[j])){
-      result.push(store[j])
     }
-  }
-      return result;
-  }
+    return store;
+}
 
 /** _.filter
 * Arguments:
