@@ -237,11 +237,14 @@ _.each = function(collection, func){
 */
 _.unique = function(array) {
     let store = [];
-    var result = [];
+   // var result = [];
     for (var i = 0; i < array.length; i++){
-      if (!store.includes(array[_.indexOf(array, array[i])])){
-      store.push(array[_.indexOf(array, array[i])])
-      }
+     if(_.indexOf(store, array[i]) === -1){
+        store.push(array[i]);
+     }
+        // if (!store.includes(array[_.indexOf(array, array[i])])){
+     // store.push(array[_.indexOf(array, array[i])])
+     // }
     }
     return store;
 }
@@ -261,6 +264,18 @@ _.unique = function(array) {
 * Extra Credit:
 *   use _.each in your implementation
 */
+_.filter = function(array, func) {
+    //call function for each element in array so for loop
+   var store = [];
+    for (var i = 0; i < array.length; i++) {
+        if (func(array[i], i, array)) {
+            store.push(array[i]);
+        } 
+             
+    }
+    return store;
+
+}
 
 
 /** _.reject
@@ -274,7 +289,17 @@ _.unique = function(array) {
 *   3) This is the logical inverse if _.filter()
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
+
 */
+_.reject = function(array, func) {
+   var store = []
+    for (var i = 0; i < array.length; i++) {
+        if (!func(array[i], i, array)) {
+            store.push(array[i])
+        } 
+    }
+    return store;
+}
 
 
 /** _.partition
@@ -295,6 +320,24 @@ _.unique = function(array) {
 *   }); -> [[2,4],[1,3,5]]
 }
 */
+_.partition = function(array, func) {
+    let tru = [];
+    let fal = [];
+    let final = [];
+    for (var i = 0; i < array.length; i++) {
+       
+
+        if (func(array[i], i, array)) {
+             tru.push(array[i])
+        } else {
+            fal.push(array[i])
+        }
+ 
+}
+final.push(tru);
+final.push(fal);
+return final;
+}
 
 
 /** _.map
@@ -435,6 +478,11 @@ _.every = function(collection, func) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+_.extend = function(obj1, obj2) {
+    for (var key in obj2){
+
+    }
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////

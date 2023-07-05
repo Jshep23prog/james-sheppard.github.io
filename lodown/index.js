@@ -92,3 +92,33 @@ function first(array, number) {
 }
 
 module.exports.first = first;
+
+/**
+ *  last: Takes in an array and a number and returns the last number of items in an array
+ * 
+ * @param {Array} collection : Function takes in an input value.
+ * @param {Number} value : Function takes in a number
+ * @returns {Array} collection : Function returns array based on parameters
+ * Will retrun an empty array if array arguement is not an array
+ * Will return the last element of the array if the number arguement is NaN or null
+ * Will return the last number of array indexes denoted by the number arguement
+ *  
+ */
+
+function last(array, number) {
+    if (!Array.isArray(array) || number < 0) {
+        return [];
+    } else if (isNaN(number) || number === null) {
+        return array[array.length - 1];
+    } else if (array.length < number) {
+        return array;
+    } else {
+        let store = [];
+        for (var i = 1; i <= number; i++) {
+            store.push(array[i])
+        }
+        return store;
+    }
+}
+
+module.exports.last = last
