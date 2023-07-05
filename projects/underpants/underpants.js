@@ -355,7 +355,23 @@ return final;
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+_.map = function(collection, func) {
+    //init store array
+    var store = [];
+    //call function for each element in collection
+        if(Array.isArray(collection)){
+            for (var i = 0; i < collection.length; i++) {
+            store.push(func(collection[i], i, collection));
+        }
+    }
+         else {
+            for (var key in collection) {
+            store.push(func(collection[key], key, collection))
+        }
+    }
+    
+    return store;
+}
 
 /** _.pluck
 * Arguments:
@@ -367,7 +383,17 @@ return final;
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+_.pluck = function(array, prop) {
+    //return an array containing the value of prop for every element in array must use .map
+    //init storage array
+    //let store = [];
+   let result = _.map(array, function(item){
+    return item[prop];
+});
 
+    
+    return result;
+};
 
 /** _.every
 * Arguments:
@@ -478,10 +504,11 @@ _.every = function(collection, func) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-_.extend = function(obj1, obj2) {
+_.extend = function(obj1, obj2, obj3) {
     for (var key in obj2){
-
+        Object.assign(obj1, obj2, obj3);
     }
+    return obj1;
 }
 
 //////////////////////////////////////////////////////////////////////

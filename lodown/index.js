@@ -2,26 +2,7 @@
 
 // YOU KNOW WHAT TO DO //
 
-/**
- * each: Designed to loop over a collection, Array or Object, and applies the 
- * action Function to each value in the collection.
- * 
- * @param {Array or Object} collection: The collection over which to iterate.
- * @param {Function} action: The Function to be applied to each value in the 
- * collection
- */
-function each(collection, action) {
-    if(Array.isArray(collection)) {
-        for(var i = 0; i < collection.length; i++) {
-            action(collection[i], i, collection);
-        }
-    } else {
-        for (var key in collection) {
-            action(collection[key], key, collection);
-        }
-    }
-}
-module.exports.each = each;
+
 
 /**
  * identity: Takes in a value and returns in unchanged.
@@ -122,3 +103,164 @@ function last(array, number) {
 }
 
 module.exports.last = last
+
+/**
+ * indexOf:  Return the index of <array> that is the first occurrance of <value>
+ * 
+ * @param {*} array : Function takes in an input array
+ * @param {*} value : Function takes in an input value
+ * @returns {*} value : Function returns index of array
+ */
+
+function indexOf(array, value) {
+    //return the index of array that is the first occurance of value
+    //for loop with a return to break the loop and return the first occurance
+    for (var i = 0; i < array.length; i++){
+        if (array[i] === value) {
+            //return the index number
+            return i;
+        }
+         
+    }
+    //if nothing triggers the return index, return -1
+    return -1;
+}
+
+/**
+ * contains: Takes in an array and a value and checks to see if the array contains said value.
+ * 
+ * @param {*} array : Function takes in an input array.
+ * @param {*} value : Function takes in an input value.
+ * @returns {*} boolean : Function returns true or false
+ */
+
+function contains(array, value) {
+    //for loop to iterate through array and use a ternary operator
+    let store = [];
+    for (var i = 0; i < array.length; i++) {
+       if (array[i] === value) {
+        store.push(array[i]);
+       }
+    }
+    return (store[0] === value ? true : false);
+}
+
+
+
+/**
+ * each: Designed to loop over a collection, Array or Object, and applies the 
+ * action Function to each value in the collection.
+ * 
+ * @param {Array or Object} collection: The collection over which to iterate.
+ * @param {Function} action: The Function to be applied to each value in the 
+ * collection
+ * 
+ */
+function each(collection, action) {
+    if(Array.isArray(collection)) {
+        for(var i = 0; i < collection.length; i++) {
+            action(collection[i], i, collection);
+        }
+    } else {
+        for (var key in collection) {
+            action(collection[key], key, collection);
+        }
+    }
+}
+module.exports.each = each;
+
+/**
+ * unique: Takes in an array and returns a new array with duplicates eliminated
+ * 
+ * @param {Array} collection: The collection over which to iterate.
+ * @param {Function} action: The Function to be applied to each value in the 
+ * collection
+ * @returns {Array} collection: returns a new array with duplicates eliminated
+ */
+
+function unique(array) {
+    let store = [];
+   // var result = [];
+    for (var i = 0; i < array.length; i++){
+     if(_.indexOf(store, array[i]) === -1){
+        store.push(array[i]);
+     }
+        // if (!store.includes(array[_.indexOf(array, array[i])])){
+     // store.push(array[_.indexOf(array, array[i])])
+     // }
+    }
+    return store;
+}
+/**
+ * filter: call <function> for each element in <array> passing the arguments:
+*      the element, it's index, <array>. Then return new array of elements 
+ * 
+ * @param {Array} collection: The collection over which to iterate.
+ * @param {Function} action: The Function to be applied to each value in the 
+ * collection
+ * @returns {Array} collection: returns a new array of elements that pass true.
+ */
+
+function filter(array, func) {
+    //call function for each element in array so for loop
+   var store = [];
+    for (var i = 0; i < array.length; i++) {
+        if (func(array[i], i, array)) {
+            store.push(array[i]);
+        } 
+             
+    }
+    return store;
+
+}
+
+/**
+ * reject: call <function> for each element in <array> passing the arguments:
+*      the element, it's index, <array>. Then return new array of elements 
+    (the logical inverse of filter)
+ * 
+ * @param {Array} collection: The collection over which to iterate.
+ * @param {Function} action: The Function to be applied to each value in the 
+ * collection
+ * @returns {Array} collection: returns a new array of elements that pass false.
+ */
+
+    function reject(array, func) {
+        var store = []
+         for (var i = 0; i < array.length; i++) {
+             if (!func(array[i], i, array)) {
+                 store.push(array[i])
+             } 
+         }
+         return store;
+     }
+
+/**
+ * partition: Takes in an array and returns a new nested array the first being filled with 
+ * elements that passed, the second filled with elements that failed
+ * @param {Array} collection: The collection over which to iterate.
+ * @param {Function} action: The Function to be applied to each value in the 
+ * collection
+ * @returns {Array} collection: Return an array that is made up of 2 sub arrays:
+*       0) An array that contains all the values for which <function> returned something truthy
+*       1) An array that contains all the values for which <function> returned something falsy
+ */
+
+function partition(array, func) {
+    let tru = [];
+    let fal = [];
+    let final = [];
+    for (var i = 0; i < array.length; i++) {
+       
+
+        if (func(array[i], i, array)) {
+             tru.push(array[i])
+        } else {
+            fal.push(array[i])
+        }
+ 
+}
+final.push(tru);
+final.push(fal);
+return final;
+}
