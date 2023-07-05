@@ -236,8 +236,8 @@ function filter(array, func) {
      }
 
 /**
- * partition: Takes in an array and returns a new nested array the first being filled with 
- * elements that passed, the second filled with elements that failed
+ * partition: Takes in an array and passes them through a function. Returns a new nested array the first 
+ *  being filled with elements that passed, the second filled with elements that failed
  * @param {Array} collection: The collection over which to iterate.
  * @param {Function} action: The Function to be applied to each value in the 
  * collection
@@ -263,4 +263,114 @@ function partition(array, func) {
 final.push(tru);
 final.push(fal);
 return final;
+}
+
+/**
+ * map: Takes in an array and returns a new nested array the first being filled with 
+ * elements that passed, the second filled with elements that failed
+ * @param {Array or Object} collection: The collection over which to iterate.
+ * @param {Function} action: The Function to be applied to each value in the 
+ * collection
+ * @returns {Array} collection: Return an array that is the result of the map iterating
+ * through the array or object and mutating tha values based on the function.
+ */
+
+function map(collection, func) {
+    //init store array
+    var store = [];
+    //call function for each element in collection
+        if(Array.isArray(collection)){
+            for (var i = 0; i < collection.length; i++) {
+            store.push(func(collection[i], i, collection));
+        }
+    }
+         else {
+            for (var key in collection) {
+            store.push(func(collection[key], key, collection))
+        }
+    }
+    
+    return store;
+}
+
+/**
+ * pluck: Takes in an array and returns a new array Return an array containing the value of 
+ * <property> for every element in <array>
+ * @param {Array or Object} collection: The collection over which to iterate.
+ * @param {property} value: The Function to be applied to each value in the 
+ * collection
+ * @returns {Array} collection: Return an array containing the value of <property> for every element in <array>
+ */
+
+function pluck(array, prop) {
+    //return an array containing the value of prop for every element in array must use .map
+  
+   let result = _.map(array, function(item){
+    return item[prop];
+});
+ 
+    return result;
+}
+
+/**
+ * every: Takes in a collection and calls a function for every element of the collection with the set paramaters :
+ * if <collection> is an array: current element, it's index, <collection>
+*  if <collection> is an object: current value, current key, <collection>
+*  If the return value of calling <function> for every element is true, return true, however if one of them is false,
+ *  return false.
+ * @param {Array or Object} collection: The collection over which to iterate.
+ * @returns {Boolean} collection: Returns true or false 
+ */
+
+function every(collection, func) {
+
+    let passes = [];
+
+    //determine if collection is array
+    if (Array.isArray(collection)){
+        //determine if function wasnt't provided
+        if (func === undefined) {
+             for (let i = 0; i < collection.length; i++) {
+                if (!collection[i]){//test every value for truthy or falsey
+                    return false;
+                }
+             }
+        } else {
+            for (let i = 0; i < collection.length; i++) {
+                if (!func(collection[i], i, collection)) {//if result of invoking func is falsey
+                    return false;
+                }
+            }
+        }
+    } else { //else it is an object
+        if (func === undefined){
+            for (var key in collection) {
+                if (!collection[key]){//test every value for truthy or falsey
+                    return false;
+                }
+             }
+        }   else {
+            for (var key in collection) {
+                if (!func(collection[key], key, collection)) {
+                    return false;
+                }
+
+            }
+
+        }// else it was
+    }
+    return true;
+};
+
+/**
+ * extend: Takes in an two or more objects and copies the data of subsequent objects to the first
+ * @param {Object} collection: The collection over which to add to.
+ * @returns {Object} collection: Return an array containing the value of the other object arguements
+ */
+
+function extend(obj1, obj2, obj3) {
+    for (var key in obj2){
+        Object.assign(obj1, obj2, obj3);
+    }
+    return obj1;
 }

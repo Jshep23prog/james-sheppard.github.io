@@ -385,8 +385,7 @@ _.map = function(collection, func) {
 */
 _.pluck = function(array, prop) {
     //return an array containing the value of prop for every element in array must use .map
-    //init storage array
-    //let store = [];
+  
    let result = _.map(array, function(item){
     return item[prop];
 });
@@ -440,12 +439,23 @@ _.every = function(collection, func) {
             }
         }
     } else { //else it is an object
-        if (func === defined){
-
+        if (func === undefined){
+            for (var key in collection) {
+                if (!collection[key]){//test every value for truthy or falsey
+                    return false;
+                }
+             }
         }   else {
+            for (var key in collection) {
+                if (!func(collection[key], key, collection)) {
+                    return false;
+                }
+
+            }
 
         }// else it was
     }
+    return true;
 };
 
 /** _.some
