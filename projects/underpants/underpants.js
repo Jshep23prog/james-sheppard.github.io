@@ -516,11 +516,9 @@ _.some = function(collection, func){
              
        //}
     }
-    if (passes.length === 0) {
-        return false;
-     } else if (passes.length > 0) {
+    if (value.length > 0){
         return true;
-     }
+    } return false;
 }   
 
 
@@ -542,6 +540,19 @@ _.some = function(collection, func){
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
+_.reduce = function(array, func, seed) {
+        
+        //init a previous value variable
+    let prev;
+    if (seed === undefined) {
+        prev = array[0];  
+            //loop through array and call a function for every element
+        for (var i = 0; i > array.length; i++){
+            prev = func(prev, array[i], i) 
+        }  
+    }
+    
+}
 
 
 /** _.extend
