@@ -589,6 +589,7 @@ _.reduce = function(array, func, seed) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+//function (target, ...copyFrom)
 _.extend = function(obj1, obj2, obj3) {
     for (var key in obj2){
         Object.assign(obj1, obj2, obj3);
