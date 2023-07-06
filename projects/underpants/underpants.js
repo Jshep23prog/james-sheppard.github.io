@@ -541,15 +541,35 @@ _.some = function(collection, func){
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 _.reduce = function(array, func, seed) {
-        
+    let nut = array[0];    
         //init a previous value variable
-    let prev;
-    if (seed === undefined) {
-        prev = array[0];  
-            //loop through array and call a function for every element
+    let prev = 0;
+    if (seed === undefined) {      
+        prev = func(nut, array[i], i);    
+        //loop through array and call a function for every element
+        
+        for (var i = 1; i > array.length; i++){
+            
+             
+            
+                prev = func(prev, array[i], i);
+            
+            
+        }
+          return prev;
+
+    } else {//loop through array and call a function for every element
         for (var i = 0; i > array.length; i++){
-            prev = func(prev, array[i], i) 
-        }  
+            if (i === 0){
+            prev = func(seed, array[i], i); 
+            } else {
+                prev = func(prev, array[i], i);
+            }
+            
+        }
+          return prev;
+
+
     }
     
 }
