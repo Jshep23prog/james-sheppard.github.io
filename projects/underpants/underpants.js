@@ -499,8 +499,8 @@ _.some = function(collection, func){
             for (let i = 0; i < collection.length; i++) {
                 if (func(collection[i], i, collection)){
                     return true;
-                } return false;
-            } 
+                } 
+            } return false;
        
            
 
@@ -554,13 +554,13 @@ _.reduce = function(array, func, seed) {
     if (seed === undefined) {      
         result = array[0]; 
         for (let i = 1; i < array.length; i++) {
-            result = func(result, array[i], i, array);  
+            result = func(result, array[i], i, array); //array isnt strictly necessary 
         }  
     } else { 
        result = seed;
         //loop through array and call a function for every element        
         for (var i = 0; i < array.length; i++){
-                result = func(result, array[i], i, array);                  
+                result = func(result, array[i], i, array);  //array isnt strictly necessary                
         }
     }
           return result;

@@ -363,6 +363,85 @@ function every(collection, func) {
 };
 
 /**
+ * some: Calls a function for every element of collection with different parameters that differ if it is an array or object
+ * @param {Array or Object} collection: The collection over which to iterate.
+ * @param {Function} action: If the return value for even one is true, return true 
+ * @returns {Boolean} collection: Returns true or false 
+ */
+
+function some(collection, func){
+    //init passes array
+    let value = [];
+    //determine if func is undefined return true if at least one element is truthy, otherwise return false
+    if (func === undefined) {
+        for (let i = 0; i < collection.length; i++) {
+           if (collection[i]){//test every value for truthy or falsey
+               return true;
+           }
+           return false; 
+        }
+    }
+
+    //determine if collection is ARRAY  
+    if (Array.isArray(collection)){
+        //func is defined and an Array
+            //for loop to pass func on each iteration
+            for (let i = 0; i < collection.length; i++) {
+                if (func(collection[i], i, collection)){
+                    return true;
+                } 
+            } return false;
+       
+           
+
+    } else { //else it is an OBJECT
+       
+
+            for (var key in collection) {
+               if (func(collection[key], key, collection)) {
+                    return true;
+               }
+                return false;
+             }
+             
+       //}
+    }
+    if (value.length > 0){
+        return true;
+    } return false;
+}
+
+/**
+ * reduce: Uses a callback function on each element of the array, in order, passing in the return value
+ *  from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
+ * @param {Array or Object} collection: The collection over which to iterate.
+ * @param {Function}  action: The Function to be applied to each value in the collection that returns value of the previous calculation
+ * @param {Seed} element: A precreated arguement to be used in the function
+ * @returns {number} element: return the sum of all the elements in an array
+ */
+
+function reduce(array, func, seed) {
+    // let result; (prev)
+     //let nut = array[0];    
+         //init a previous value variable
+     let result;
+     if (seed === undefined) {      
+         result = array[0]; 
+         for (let i = 1; i < array.length; i++) {
+             result = func(result, array[i], i, array); //array isnt strictly necessary 
+         }  
+     } else { 
+        result = seed;
+         //loop through array and call a function for every element        
+         for (var i = 0; i < array.length; i++){
+                 result = func(result, array[i], i, array);  //array isnt strictly necessary                
+         }
+     }
+           return result;
+ 
+ };
+
+/**
  * extend: Takes in an two or more objects and copies the data of subsequent objects to the first
  * @param {Object} collection: The collection over which to add to.
  * @returns {Object} collection: Return an array containing the value of the other object arguements
