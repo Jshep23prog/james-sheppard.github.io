@@ -521,6 +521,12 @@ _.some = function(collection, func){
     } return false;
 }   
 
+// BIG HITTERS map, filter, forEach, reduce
+/**
+ * map => calls a function on each value and pushes return to output ARRAY
+ * filter => tests each value with a function and pushes the values that return true to output ARRAY
+ * reduce => iterates through a collection, passes each value to a callback to "accumulate" a single return VALUE
+ * forEach => calls a function on each value on an array (no return)
 
 /** _.reduce
 * Arguments:
@@ -541,38 +547,27 @@ _.some = function(collection, func){
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 _.reduce = function(array, func, seed) {
-    let nut = array[0];    
+   // let result; (prev)
+    //let nut = array[0];    
         //init a previous value variable
-    let prev = 0;
+    let result;
     if (seed === undefined) {      
-        prev = func(nut, array[i], i);    
-        //loop through array and call a function for every element
-        
-        for (var i = 1; i > array.length; i++){
-            
-             
-            
-                prev = func(prev, array[i], i);
-            
-            
+        result = array[0]; 
+        for (let i = 1; i < array.length; i++) {
+            result = func(result, array[i], i, array);  
+        }  
+    } else { 
+       result = seed;
+        //loop through array and call a function for every element        
+        for (var i = 0; i < array.length; i++){
+                result = func(result, array[i], i, array);                  
         }
-          return prev;
-
-    } else {//loop through array and call a function for every element
-        for (var i = 0; i > array.length; i++){
-            if (i === 0){
-            prev = func(seed, array[i], i); 
-            } else {
-                prev = func(prev, array[i], i);
-            }
-            
-        }
-          return prev;
-
-
     }
+          return result;
+
+};
     
-}
+
 
 
 /** _.extend
