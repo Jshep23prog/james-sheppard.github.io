@@ -29,14 +29,23 @@ var maleCount = function(array) {
     return males.length;
 };
 
-var femaleCount;
+var femaleCount = function(array){
+    //use reduce
+    let females = _.reduce(array, function(customer){
+         return customer.gender === 'female';
+    })
+   // return females.reduce();
+};
 
-var oldestCustomer = _.reduce(array, function(accumulator, current){
+var oldestCustomer = function(array) {
     //determine if the current custome is older than accumulator
         //if true, return current
+        let oldest = _.reduce(array, function(accumulator, current){
+
+        });
     //else
-        //return accumulator
-});
+        return oldest.name;
+}
 /**
  * invoke _.reduce(array)
  * if seed is undefinrd //TRUE
