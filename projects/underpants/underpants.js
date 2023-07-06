@@ -479,6 +479,50 @@ _.every = function(collection, func) {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func){
+    //init passes array
+    let value = [];
+    //determine if func is undefined return true if at least one element is truthy, otherwise return false
+    if (func === undefined) {
+        for (let i = 0; i < collection.length; i++) {
+           if (collection[i]){//test every value for truthy or falsey
+               return true;
+           }
+           return false; 
+        }
+    }
+
+    //determine if collection is ARRAY  
+    if (Array.isArray(collection)){
+        //func is defined and an Array
+            //for loop to pass func on each iteration
+            for (let i = 0; i < collection.length; i++) {
+                if (func(collection[i], i, collection)){
+                    return true;
+                } return false;
+            } 
+       
+           
+
+    } else { //else it is an OBJECT
+       
+
+            for (var key in collection) {
+               if (func(collection[key], key, collection)) {
+                    return true;
+               }
+                return false;
+             }
+             
+       //}
+    }
+    if (passes.length === 0) {
+        return false;
+     } else if (passes.length > 0) {
+        return true;
+     }
+}   
+
 
 /** _.reduce
 * Arguments:
