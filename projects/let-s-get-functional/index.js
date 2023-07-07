@@ -30,11 +30,12 @@ var maleCount = function(array) {
 };
 
 var femaleCount = function(array){
-    //use reduce
-    let females = _.reduce(array, function(customer){
-         return customer.gender === 'female';
-    })
-   // return females.reduce();
+    const females = 0;
+    const sumWithInitial = array.reduce(
+      function(accumulator, currentValue){
+         return  customer.gender === 'females' + currentValue}
+         
+    ); return sumWithInitial
 };
 
 var oldestCustomer = function(array) {
