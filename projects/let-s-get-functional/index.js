@@ -30,26 +30,28 @@ var maleCount = function(array) {
 };
 
 var femaleCount = function(array){
-   let females = _.reduce(array, function(current){
-    console.log(current);
-    if(current.gender === 'female'){
-        return females += 1;
-    };
-    // if(current.gender === 'female'){
-    //     females += 1;
+        //  reduce takes in accumulator(number that iterates and accumulates, current array index, and a seed at the end)
+   let females = _.reduce(array, function(accumulator, current){
+   //conditional for function that is passed each time
+     if(current.gender === 'female'){
+        //if true, accumulator is += 1
+         accumulator += 1;
      
-    // }
-   
+     }
+     //return accumulator so females has value
+     return accumulator;
    }, 0);
-     return console.log(females);
-    ;
+   //return females
+     return females;
+    
 };
 //console.log(females);
+
 var oldestCustomer = function(array) {
     //determine if the current custome is older than accumulator
         //if true, return current
-        let oldest = _.reduce(array, function(accumulator, current){
-
+        let oldest = _.filter(array, function(customer){
+            if (customer.age){}
         });
     //else
         return oldest.name;
@@ -81,24 +83,16 @@ return names.length;
 var friendFirstLetterCount = function(array, customer, letter) {
     //find the customer in the array
     var store;
-
     for (var i = 0; i < array.length; i++){
         if (array[i].name === customer){
             store = array[i].friends
         }
-        //return store;
     }
-    //console.log(store);
+    
     let names = _.filter(store, function(store){
-        
-        
         if(store.name.charAt(0) === letter || store.name.charAt(0) === letter.toUpperCase()) {
             return true;
-        }
-        // if(customer['friends']){
-        // return customer['friends'];
-        // }
-       // return obj.name === customer;
+        }     
     });
 
     //console.log(names);
