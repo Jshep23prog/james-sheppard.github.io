@@ -22,7 +22,7 @@ describe('Let\'s Get Functional', function(){
     });
   });
 
-  describe.only('femaleCount()', function () {
+  describe('femaleCount()', function () {
     'use strict';
 
     const femaleCount = index.femaleCount;

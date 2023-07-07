@@ -30,18 +30,21 @@ var maleCount = function(array) {
 };
 
 var femaleCount = function(array){
-   let females = _.reduce(array, function(accumulator, current){
-    return accumulator = current.gender === 'female';
+   let females = _.reduce(array, function(current){
+    console.log(current);
+    if(current.gender === 'female'){
+        return females += 1;
+    };
     // if(current.gender === 'female'){
     //     females += 1;
-    //     // console.log('1', current);
+     
     // }
    
    }, 0);
-     return females;
-    
+     return console.log(females);
+    ;
 };
-
+//console.log(females);
 var oldestCustomer = function(array) {
     //determine if the current custome is older than accumulator
         //if true, return current
@@ -66,28 +69,40 @@ var averageBalance;
 
 var firstLetterCount = function(array, letter) {
     let names = _.filter(array, function(customer){
-        return customer.name;
-    });
-    //console.log(names);
-    //init match array
-    let match = [];
-    //for loop to loop through returned array of customer names
-    for (var i = 0; i < names.length; i++) {
-        //check iteration if charAt0 === letter
-        if(names[i].name.charAt(0) === letter || names[i].name.charAt(0) === letter.toUpperCase()) {
-            match.push(names[i].name);
+        if(customer.name.charAt(0) === letter || customer.name.charAt(0) === letter.toUpperCase()) {
+            return true;
         }
-
-    }
-    return match.length;
+    });
+    
+return names.length;
+  
 }
 
 var friendFirstLetterCount = function(array, customer, letter) {
-    let names = _.filter(array, function(customer){
-        return customer.friends;
+    //find the customer in the array
+    var store;
+
+    for (var i = 0; i < array.length; i++){
+        if (array[i].name === customer){
+            store = array[i].friends
+        }
+        //return store;
+    }
+    //console.log(store);
+    let names = _.filter(store, function(store){
+        
+        
+        if(store.name.charAt(0) === letter || store.name.charAt(0) === letter.toUpperCase()) {
+            return true;
+        }
+        // if(customer['friends']){
+        // return customer['friends'];
+        // }
+       // return obj.name === customer;
     });
-    
-console.log(names);
+
+    //console.log(names);
+return names.length
 }
 
 var friendsCount;
