@@ -1,5 +1,3 @@
-//NOT COMPLETE
-
 /** ~~~~~~~~~~~~~~~~~~~~~DATA TYPES~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Programming languages all have built-in data structures, but these often differ from one language to another. 
  * Here we will list the built in data structures available in JavaScript
@@ -173,3 +171,30 @@ let newAge = age;
 // First, declare a new variable age and initialize its value with 25.
 // Second, declare another variable newAge and assign the age to the newAge variable.
 // Behind the scene, the JavaScript engine creates a copy of the primitive value 25 and assign it to the newAge variable.
+
+let john = {
+	name: "John Smith",
+	age: 45,
+	gender: "male"
+}
+
+let newJohn = john 
+//{name: "John Smith", age: 45, gender: "male"}
+
+// Lets edit the name of newJohn variable
+
+newJohn.name = "Tom Doe" // "Tom Doe"
+
+console.log(newJohn) 
+//{name: "Tom Doe", age: 45, gender: "male"}
+
+console.log(john) 
+// {name: "Tom Doe", age: 45, gender: "male"}
+
+// The newJohn object is NOT a copy of the object stored inside of the john variable. 
+// Instead, the variable newJohn is referencing the original john object.
+
+// That means if you decide to edit thenewJohn object ( e.g changing the name property of newJohn on line 3 to "Tom Doe"), 
+// you are in fact modifying the john object!
+
+// As you can see in lines 16 and 19, both objects’ name property has a value of "Tom Doe".
