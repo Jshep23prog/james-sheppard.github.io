@@ -30,12 +30,16 @@ var maleCount = function(array) {
 };
 
 var femaleCount = function(array){
-    const females = 0;
-    const sumWithInitial = array.reduce(
-      function(accumulator, currentValue){
-         return  customer.gender === 'females' + currentValue}
-         
-    ); return sumWithInitial
+   let females = _.reduce(array, function(accumulator, current){
+    return accumulator = current.gender === 'female';
+    // if(current.gender === 'female'){
+    //     females += 1;
+    //     // console.log('1', current);
+    // }
+   
+   }, 0);
+     return females;
+    
 };
 
 var oldestCustomer = function(array) {
@@ -78,7 +82,13 @@ var firstLetterCount = function(array, letter) {
     return match.length;
 }
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter) {
+    let names = _.filter(array, function(customer){
+        return customer.friends;
+    });
+    
+console.log(names);
+}
 
 var friendsCount;
 
