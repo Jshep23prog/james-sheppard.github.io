@@ -50,11 +50,14 @@ var femaleCount = function(array){
 var oldestCustomer = function(array) {
     //determine if the current custome is older than accumulator
         //if true, return current
-        let oldest = _.filter(array, function(customer){
-            if (customer.age){}
-        });
+        let oldest = _.reduce(array, function(accumulator, current){
+            if (current.age > accumulator.age) {
+                accumulator = current;
+            }
+            return accumulator;
+        },{age : 0})
     //else
-        return oldest.name;
+       return oldest.name;
 }
 /**
  * invoke _.reduce(array)
@@ -65,9 +68,21 @@ var oldestCustomer = function(array) {
  * //result = {name: 'Adele Mullin', 2}
  */
 
-var youngestCustomer;
+var youngestCustomer = function(array){
+    let youngest = _.reduce(array, function(accumulator,current){
+        //similar to oldest
+        if(current.age < accumulator.age) {
+            accumulator = current;
+        }
+        return accumulator;
+    })
+    //return string
+    return youngest.name;
+};
 
-var averageBalance;
+var averageBalance; //difficult number $3,1092.00, find a way to eliminate the exttra symbols
+//invoke reduce to get a total
+//divide by number of customer
 
 var firstLetterCount = function(array, letter) {
     let names = _.filter(array, function(customer){
@@ -101,7 +116,7 @@ return names.length
 
 var friendsCount;
 
-var topThreeTags;
+var topThreeTags; //use map
 
 var genderCount;
 
