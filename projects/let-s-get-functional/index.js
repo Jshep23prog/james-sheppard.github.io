@@ -25,7 +25,7 @@ var maleCount = function(array) {
     let males = _.filter(array, function(customer){
         return customer.gender === 'male';
     });// [ {male}, {male}, {male} ]
-    
+    //console.log(males);
     return males.length;
 };
 
@@ -60,7 +60,23 @@ var youngestCustomer;
 
 var averageBalance;
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter) {
+    let names = _.filter(array, function(customer){
+        return customer.name;
+    });
+    //console.log(names);
+    //init match array
+    let match = [];
+    //for loop to loop through returned array of customer names
+    for (var i = 0; i < names.length; i++) {
+        //check iteration if charAt0 === letter
+        if(names[i].name.charAt(0) === letter || names[i].name.charAt(0) === letter.toUpperCase()) {
+            match.push(names[i].name);
+        }
+
+    }
+    return match.length;
+}
 
 var friendFirstLetterCount;
 
