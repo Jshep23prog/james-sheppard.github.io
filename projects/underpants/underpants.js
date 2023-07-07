@@ -586,10 +586,10 @@ _.reduce = function(array, func, seed) {
 */
 //function (target, ...copyFrom)
 _.extend = function(obj1, obj2, obj3) {
-    for (var key in obj2){
-        Object.assign(obj1, obj2, obj3);
-    }
-    return obj1;
+   // for (var key in obj1){
+      return Object.assign(obj1, obj2, obj3);
+   // }
+    //return obj1;
 }
 
 //////////////////////////////////////////////////////////////////////

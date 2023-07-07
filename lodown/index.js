@@ -126,6 +126,8 @@ function indexOf(array, value) {
     return -1;
 }
 
+module.exports.indexOf = indexOf
+
 /**
  * contains: Takes in an array and a value and checks to see if the array contains said value.
  * 
@@ -145,7 +147,7 @@ function contains(array, value) {
     return (store[0] === value ? true : false);
 }
 
-
+module.exports.contains = contains
 
 /**
  * each: Designed to loop over a collection, Array or Object, and applies the 
@@ -191,6 +193,10 @@ function unique(array) {
     }
     return store;
 }
+
+module.exports.unique = unique
+
+
 /**
  * filter: call <function> for each element in <array> passing the arguments:
 *      the element, it's index, <array>. Then return new array of elements 
@@ -214,6 +220,9 @@ function filter(array, func) {
 
 }
 
+module.exports.filter = filter
+
+
 /**
  * reject: call <function> for each element in <array> passing the arguments:
 *      the element, it's index, <array>. Then return new array of elements 
@@ -234,6 +243,9 @@ function filter(array, func) {
          }
          return store;
      }
+
+module.exports.reject = reject
+
 
 /**
  * partition: Takes in an array and passes them through a function. Returns a new nested array the first 
@@ -265,6 +277,9 @@ final.push(fal);
 return final;
 }
 
+module.exports.partition = partition
+
+
 /**
  * map: Takes in an array and returns a new nested array the first being filled with 
  * elements that passed, the second filled with elements that failed
@@ -293,6 +308,9 @@ function map(collection, func) {
     return store;
 }
 
+module.exports.map = map
+
+
 /**
  * pluck: Takes in an array and returns a new array Return an array containing the value of 
  * <property> for every element in <array>
@@ -311,6 +329,9 @@ function pluck(array, prop) {
  
     return result;
 }
+
+module.exports.pluck = pluck
+
 
 /**
  * every: Takes in a collection and calls a function for every element of the collection with the set paramaters :
@@ -362,6 +383,9 @@ function every(collection, func) {
     return true;
 };
 
+module.exports.every = every
+
+
 /**
  * some: Calls a function for every element of collection with different parameters that differ if it is an array or object
  * @param {Array or Object} collection: The collection over which to iterate.
@@ -411,6 +435,9 @@ function some(collection, func){
     } return false;
 }
 
+module.exports.some = some
+
+
 /**
  * reduce: Uses a callback function on each element of the array, in order, passing in the return value
  *  from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
@@ -441,6 +468,9 @@ function reduce(array, func, seed) {
  
  };
 
+ module.exports.reduce = reduce
+
+
 /**
  * extend: Takes in an two or more objects and copies the data of subsequent objects to the first
  * @param {Object} collection: The collection over which to add to.
@@ -453,3 +483,5 @@ function extend(obj1, obj2, obj3) {
     }
     return obj1;
 }
+
+module.exports.extend = extend
