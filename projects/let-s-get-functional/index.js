@@ -80,9 +80,29 @@ var youngestCustomer = function(array){
     return youngest.name;
 };
 
-var averageBalance; //difficult number $3,1092.00, find a way to eliminate the exttra symbols
+var averageBalance = function(array){
+    
+    let total = _.map(array, function(customer){
+            return customer.balance;
+        }     
+        
+    )
+    const num = total.length;
+    //return console.log(total);
+    //console.log(num)
+    let added = 0;
+   for (var i = 0; i < total.length; i++){
+    added += parseFloat(total[i].replace(/[\$,]/g, ''))
+   }
+  return added / num;
+
+}; //difficult number $3,1092.00, find a way to eliminate the exttra symbols
 //invoke reduce to get a total
 //divide by number of customer
+
+
+
+
 
 var firstLetterCount = function(array, letter) {
     let names = _.filter(array, function(customer){
