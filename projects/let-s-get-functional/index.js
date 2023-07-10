@@ -138,7 +138,31 @@ var friendsCount;
 
 var topThreeTags; //use map
 
-var genderCount;
+var genderCount = function(array){
+    let sling = _.map(array, function(customer){
+        return customer.gender;
+    })
+    let total = sling;
+    let count = {};
+    let fem = [];
+    let mal = [];
+    let non = [];
+    for (var i = 0; i < total.length; i++){
+        if (total[i] === 'female') {
+            fem.push(total[i]);
+        } else if (total[i] === 'male') {
+            mal.push(total[i]);
+        } else {
+            non.push(total[i]);
+        }
+       
+    }
+        count.female = fem.length;
+        count.male = mal.length;
+        count['non-binary'] = non.length;
+    //return console.log(count);
+   return count;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
