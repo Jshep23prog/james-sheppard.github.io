@@ -1,10 +1,35 @@
 ////////////////////////////////////////////////////////////////////////////////
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function range() {
-
+//create a function that reutns an array with a range of numbers from num1 -num2
+function range(num1, num2, step) {
+  
+  let store = [];
+   
+  if (step === undefined) {
+    if (num1 < num2) {
+      for (var i = num1; i <= num2; i++) {
+        store.push(i);
+  }
+  } else if (num1 > num2) {
+      for (var i = num1; i >= num2; i--) {
+       store.push(i);
+   }
 }
+  return store;
+
+  } else if (step > 0){
+       for (var i = num1; i <= num2; i += step) {
+        store.push(i);
+  }
+  } else if (step < 0) {
+    for (var i = num1; i >= num2; i+= step) {
+       store.push(i);
+   }
+  }
+      return store;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
