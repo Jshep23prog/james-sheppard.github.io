@@ -184,14 +184,14 @@ var exponent = function(base, exp) {
 // powerOfTwo(10); // false
 //determine if number is power of two
 var powerOfTwo = function(n) {
-  var result = n / 2;
-  if (n < 2){
+  //var result = n / 2;
+  if (n === 0){
     return false;
-  } else if (n === 2) {
+  } else if (n === 2 || n === 1) {
     return true;
   }
   //base
-return powerOfTwo(result);
+return powerOfTwo(n / 2);
   //recursion
 };
 

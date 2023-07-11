@@ -34,25 +34,49 @@ function range(num1, num2, step) {
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function sum() {
+//write a function that takes an array of numbers and returrns the sum of these numbers
+function sum(array) {
+  if (array.length === 1){
+    return array[0];
+  }
+  //init storage var
+  let sum = 0;
+  //forloop
+  for (var i = 0; i < array.length; i++){
+    //aditional operator so sum is added each loop
+    sum += array[i];
+  }
+  return sum;
 
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArray ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function reverseArray() {
-
+//reverseArray, takes an array as argument and produces a new array that has the same elements in the inverse order
+function reverseArray(array) {
+  //init storage var
+  let store = [];
+  //for loop with unshift so it added to the array backwards
+  for (var i = 0; i < array.length; i++) {
+    store.unshift(array[i]);
+  }
+return store;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function reverseArrayInPlace() {
-
+//wapping the element at position i with the one at position array.length - 1 - i. 
+//You can use a local binding to briefly hold on to one of the elements, overwrite that one with its mirror image,
+// and then put the value from the local binding in the place where the mirror image used to be.
+function reverseArrayInPlace(array) {
+//lets try a for loop with a length / 2 to get to the middle of a for loop
+ for (var i = 0; i < Math.floor(array.length / 2); i++){
+  let hold = array[i];
+  array[i] = array[array.length - 1 - i];
+  array[array.length - 1 - i] = hold;
+ }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
