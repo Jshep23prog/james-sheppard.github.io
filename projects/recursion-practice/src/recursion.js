@@ -93,12 +93,68 @@ var isEven = function(n) {
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
-var sumBelow = function(n) {
+//should work on negative intergers and return their sums
+var sumBelow = function(n, sum = 0) {
+  //base want to end recursion when n === 0
+  if (n === 0) {
+    return sum;
+  }
+  //recursion
+  //run two if statements, one for positive ints one for negative
+  if (n > 0){  //check to see if n is positive
+    if (!sum_sumBelow) { 
+      //init storage var
+      var sum_sumBelow = 0; 
+     // add numbers
+     //the n - 1 is important for it will iterater through and subtract iterations * 1 in total
+     sum_sumBelow = n - 1 + sumBelow(n - 1); 
+     return sum_sumBelow;
+    }
+   }
+   if (n < 0) { //check to see if negative similar to positive but swap the n - 1 to +1
+     if (!sum_sumBelow) var sum_sumBelow = 0;
+     // add numbers
+     sum_sumBelow = n + 1 + sumBelow(n + 1);
+     return sum_sumBelow;
+   }
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
+//should return array
+//if x === y return []
+//base cases
 var range = function(x, y) {
+ //init empty array
+ let empty = [];
+ //if x === y or y-x === 1, there are no range intergers to return
+  if (x === y || y - x === 1) {
+    return empty; //return empty array
+  }
+  if (x < y) { //conditional to see if x < y
+    if (y - x === 2){//another conditional to see if there is only one number in range 
+      //(2,4) => 4-2 = 2, so one number in range => x + 1 => [3]
+    return [x + 1];
+  }
+  else {
+    var store = range(x, y - 1); //else invoke our recursion decriminting y
+      store.push(y - 1);
+      return store;
+  }
+} else { // if y larger than x
+  if (x - y === 2){
+  return [y + 1];
+}
+else {
+  var store = range(x, y + 1);
+  store.push(y + 1);
+    return store;
+}
+}
+
+
+
+  //recursion
 };
 
 // 7. Compute the exponent of a number.
