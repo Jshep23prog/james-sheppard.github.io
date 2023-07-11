@@ -102,20 +102,20 @@ var sumBelow = function(n, sum = 0) {
   //recursion
   //run two if statements, one for positive ints one for negative
   if (n > 0){  //check to see if n is positive
-    if (!sum_sumBelow) { 
+    
       //init storage var
-      var sum_sumBelow = 0; 
+    
      // add numbers
      //the n - 1 is important for it will iterater through and subtract iterations * 1 in total
-     sum_sumBelow = n - 1 + sumBelow(n - 1); 
-     return sum_sumBelow;
-    }
+     return sum = n - 1 + sumBelow(n - 1); 
+    //return sum;
+    
    }
    if (n < 0) { //check to see if negative similar to positive but swap the n - 1 to +1
-     if (!sum_sumBelow) var sum_sumBelow = 0;
+     
      // add numbers
-     sum_sumBelow = n + 1 + sumBelow(n + 1);
-     return sum_sumBelow;
+     sum = n + 1 + sumBelow(n + 1);
+     return sum;
    }
 };
 
@@ -128,6 +128,7 @@ var range = function(x, y) {
  //init empty array
  let empty = [];
  //if x === y or y-x === 1, there are no range intergers to return
+ //recursion
   if (x === y || y - x === 1) {
     return empty; //return empty array
   }
@@ -163,13 +164,35 @@ else {
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  //base
+  if (exp < 0) { //if negative interger we have to divide
+    return exponent(base, exp + 1) / base;
+  } //edge case if exp is 0 return 1
+  if(exp === 0){
+    return 1;
+  }//edge case if exp = 1 return base
+  if(exp === 1){
+    return base;
+  }
+  //recursion
+  return base * exponent(base, exp - 1);
 };
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
+//determine if number is power of two
 var powerOfTwo = function(n) {
+  var result = n / 2;
+  if (n < 2){
+    return false;
+  } else if (n === 2) {
+    return true;
+  }
+  //base
+return powerOfTwo(result);
+  //recursion
 };
 
 // 9. Write a function that accepts a string a reverses it.
