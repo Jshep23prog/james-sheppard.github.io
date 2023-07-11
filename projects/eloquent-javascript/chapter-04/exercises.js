@@ -82,10 +82,18 @@ function reverseArrayInPlace(array) {
 ////////////////////////////////////////////////////////////////////////////////
 // arrayToList /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+//Write a function arrayToList that builds up a list structure like the one shown when given [1, 2, 3] as argument.
+function arrayToList(array) {
+  //let list equal to null so at the end of loop null is the value
+  let list = null;
+//to handle large array need for loop
+//since we are looping, the original result had it in descending order, so we have to alter our for loop
+for (var i = array.length - 1; i >= 0; i--){
 
-function arrayToList() {
-
+ list = { value : array[i], rest : list}
 }
+return list;
+};
 
 ////////////////////////////////////////////////////////////////////////////////
 // listToArray /////////////////////////////////////////////////////////////////
