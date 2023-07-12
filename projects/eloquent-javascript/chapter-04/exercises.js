@@ -99,8 +99,25 @@ return list;
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
-
+function listToArray(list) {
+  //storage array
+  let result = [];
+  //init a conditional to weed out if values are null
+  if (typeof list === 'undefined' || list.value === undefined || list.rest === undefined) {
+    return result; //if it passes if conditional, execute else 
+  } else {
+  result.push(list.value);
+  //while loop to determine if the value has the property rest and contains data and to stop when it doesnt
+  while (list.hasOwnProperty('rest') && list.rest !== null) {
+    //make list have the rest key
+    list = list.rest;
+    //check to see if list has value property and push if so
+    if (list.hasOwnProperty('value')) {
+      result.push(list.value);
+    }
+  }
+}
+  return result;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
