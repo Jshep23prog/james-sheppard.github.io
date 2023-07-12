@@ -123,25 +123,48 @@ function listToArray(list) {
 ////////////////////////////////////////////////////////////////////////////////
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function prepend() {
-
+//Then add a helper function prepend, which takes an element and a list
+//and creates a new list that adds the element to the front of the input list
+function prepend(element, list) {
+//return a new list that adds element to the front
+return {
+  value : element,
+  rest: list
+}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function nth() {
-
+//nth, which takes a list and a number and returns the element at the given position 
+//in the list (with zero referring to the first element) or undefined when there is no such element.
+function nth(list, num) {
+  //this one threw me for a bit. didn't realize I had to call anothewr function
+  return listToArray(list)[num];
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function deepEqual() {
-
+//Write a function deepEqual that takes two values and returns true only if they 
+//are the same value or are objects with the same properties, where the values 
+//of the properties are equal when compared with a recursive call to deepEqual.
+function deepEqual(val1, val2) {
+  //run an if statement chain to compare various data types
+  if (val1 === val2) return true;
+  //next determine ifany values are falsey with an if conditional containg ors
+  if(val1 == null || typeof val1 != 'object' || val2 == null || typeof val2 != 'object') return false;
+  //determine if object keys length are identical
+  let keys1 = Object.keys(val1); //now is an array of keys
+  let keys2 = Object.keys(val2); //now is an array of keys
+  if (keys1.length != keys2.length) return false;
+  //next determine if values are identical for of loop
+  for (let key of keys1) {
+    if (!keys2.includes(key) || !deepEqual(val1[key], val2[key])) return false;
+  }
+  return true;
+  //
+  
 }
 
 ////////////////////////////////////////////////////////////////////////////////
