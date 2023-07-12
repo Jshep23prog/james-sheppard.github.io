@@ -196,11 +196,33 @@ return powerOfTwo(n / 2);
 };
 
 // 9. Write a function that accepts a string a reverses it.
-var reverse = function(string) {
-};
-
+var reverse = function(string, out = []) {
+  //let rev = [];
+    //base case when no string exists
+  if(string.length === 0) {
+    return out.join('');
+  } else {
+    //recursion slice off each letter
+  out.unshift(string[0]);
+    
+    return reverse(string.slice(1), out);
+  }
+  };
+//console.log(reverse('Racecar'));
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string) {
+var palindrome = function(string, out = []) {
+  string = string.toLowerCase().replace(' ')
+  //base case 
+  if (string.length === 0){
+    if (out === string){
+      return true;
+    } else {
+      return false;
+    }
+  }
+  //recursion
+  out.unshift(string[0])
+  return palindrome(string.slice(1), out)
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
