@@ -134,7 +134,20 @@ var friendFirstLetterCount = function(array, customer, letter) {
 return names.length
 }
 
-var friendsCount;
+var friendsCount = function(array, customer){
+    //for (let x = 0; x < array.length; x++){
+   let pick = array.reduce(function(accumulator, current){
+     for (var j = 0; j < current.friends.length; j++){
+            if (current.friends[j].name === customer) {
+                accumulator.push(current.name);
+            }
+            }
+            return accumulator;
+        },[])
+    return pick;
+  //}
+    //else
+  }
 
 var topThreeTags; //use map
 
