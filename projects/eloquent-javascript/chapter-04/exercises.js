@@ -84,41 +84,35 @@ function reverseArrayInPlace(array) {
 ////////////////////////////////////////////////////////////////////////////////
 //Write a function arrayToList that builds up a list structure like the one shown when given [1, 2, 3] as argument.
 function arrayToList(array) {
+  //you have to start inside and move it out
   //let list equal to null so at the end of loop null is the value
-  let list = null;
+  let rest = null;
 //to handle large array need for loop
 //since we are looping, the original result had it in descending order, so we have to alter our for loop
 for (var i = array.length - 1; i >= 0; i--){
 
- list = { value : array[i], rest : list}
+ rest = { value : array[i], rest : rest}
 }
-return list;
+return rest;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray(list) {
-  //storage array
-  let result = [];
-  //init a conditional to weed out if values are null
-  if (typeof list === 'undefined' || list.value === undefined || list.rest === undefined) {
-    return result; //if it passes if conditional, execute else 
-  } else {
-  result.push(list.value);
-  //while loop to determine if the value has the property rest and contains data and to stop when it doesnt
-  while (list.hasOwnProperty('rest') && list.rest !== null) {
-    //make list have the rest key
-    list = list.rest;
-    //check to see if list has value property and push if so
-    if (list.hasOwnProperty('value')) {
-      result.push(list.value);
-    }
-  }
+function listToArray(list, output = []) {
+//base
+if(list.rest === null){
+ output.push(list.value);
+ return output;
 }
-  return result;
+  //recursion
+  //grab the current value at 'value and add to array
+  output.push(list.value);
+
+  return listToArray(list.rest, output);
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // prepend /////////////////////////////////////////////////////////////////////
@@ -150,22 +144,22 @@ function nth(list, num) {
 //are the same value or are objects with the same properties, where the values 
 //of the properties are equal when compared with a recursive call to deepEqual.
 function deepEqual(val1, val2) {
-  //run an if statement chain to compare various data types
-  if (val1 === val2) return true;
-  //next determine ifany values are falsey with an if conditional containg ors
-  if(val1 == null || typeof val1 != 'object' || val2 == null || typeof val2 != 'object') return false;
-  //determine if object keys length are identical
-  let keys1 = Object.keys(val1); //now is an array of keys
-  let keys2 = Object.keys(val2); //now is an array of keys
-  if (keys1.length != keys2.length) return false;
-  //next determine if values are identical for of loop
-  for (let key of keys1) {
-    if (!keys2.includes(key) || !deepEqual(val1[key], val2[key])) return false;
-  }
-  return true;
-  //
   
 }
+// //run an if statement chain to compare various data types
+// if (val1 === val2) return true;
+// //next determine ifany values are falsey with an if conditional containg ors
+// if(val1 == null || typeof val1 != 'object' || val2 == null || typeof val2 != 'object') return false;
+// //determine if object keys length are identical
+// let keys1 = Object.keys(val1); //now is an array of keys
+// let keys2 = Object.keys(val2); //now is an array of keys
+// if (keys1.length != keys2.length) return false;
+// //next determine if values are identical for of loop
+// for (let key of keys1) {
+//   if (!keys2.includes(key) || !deepEqual(val1[key], val2[key])) return false;
+// }
+// return true;
+// //
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
