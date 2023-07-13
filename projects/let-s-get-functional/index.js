@@ -149,7 +149,19 @@ var friendsCount = function(array, customer){
     //else
   }
 
-var topThreeTags; //use map
+var topThreeTags = function(array){
+    let tags = _.map(array, function(customer){
+        return customer.tags;
+    }     
+    
+)
+
+//return console.log(tags);
+
+
+
+
+} //use map
 
 var genderCount = function(array){
     let sling = _.map(array, function(customer){
