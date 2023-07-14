@@ -211,21 +211,17 @@ var reverse = function(string, out = []) {
 //console.log(reverse('Racecar'));
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string, out = []) {
-  string = string.toLowerCase().replace(/\s/g, '');
-  let tester = string.toLowerCase().replace(/\s/g, '');
-
-  //base case 
-  if (string.length === 0){
-    if (out === tester){
-      return true;
-    } else {
-      return false;
-    }
-  }
-  //recursion
-  out.unshift(string[0])
-  return palindrome(string.slice(1), out)
-};
+  const str = string.toLowerCase().replace(/\s/g, '');
+ // base case
+   if (str.length === 0 || str.length === 1){
+     return true;
+   }
+ //recursion
+   if (str[0] === str[str.length -1]){
+     return palindrome(str.slice(1, -1))
+   }
+   return false;
+ };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
@@ -336,10 +332,11 @@ var countOccurrence = function(array, value, count = 0) {
   }
   //recursion
   if (array[0] === value){
-    count += 1;
-    return countOccurance(array.slice(1), value, count);
+    
+    return countOccurrence(array.slice(1), value, count += 1);
+  } else {
+  return countOccurrence(array.slice(1), value, count);
   }
-  return countOccurance(array.slice(1), value, count);
 };
 
 // 20. Write a recursive version of map.
