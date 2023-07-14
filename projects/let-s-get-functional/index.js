@@ -149,19 +149,49 @@ var friendsCount = function(array, customer){
     //else
   }
 
-var topThreeTags = function(array){
-    let tags = _.map(array, function(customer){
-        return customer.tags;
-    }     
+  var topThreeTags = function(customers) {
+    let output = [];
+    let tagMap = {};
+    let final = [];
+    //use for each to access the customer tag arra
+      customers.forEach(function(customer){
+        //nested forEach to access the tag array values
+        customer.tags.forEach(function(tag){
+          //map the tags with count of their usage
+          tagMap[tag] = (tagMap[tag] || 0) +1;
+        });
+      });
+    //return tagMap;
+    //now we have a tagMap to sort through within the function
+    var sorted = Object.keys(tagMap).map(function(m){
+      return [m, tagMap[m]]; //this converts object to array
+    }).sort(function(a, b){ //this sorts array using the index of the array as numerical comparisons
+      return a[1] - b[1];
+      })
+      //now we have the array in order, slice the last three to the output array
+      
+      output = sorted.slice(-3);
+      //return 
+     
+      for (var x = 0; x < output.length; x++){
+        for (var y = 0; y < output[x].length; y++){
+          if (typeof output[x][y] === 'string'){
+            final.push(output[x][y]);
+          }
+        }
+      }
+        return final;
     
-)
+    //return sorted; 
+    //now we have an array we can sort through since sort is an array method
+  };
 
 //return console.log(tags);
 
 
 
 
-} //use map
+ //use map
 
 var genderCount = function(array){
     let sling = _.map(array, function(customer){
