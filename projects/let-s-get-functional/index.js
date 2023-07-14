@@ -150,40 +150,35 @@ var friendsCount = function(array, customer){
   }
 
   var topThreeTags = function(customers) {
-    let output = [];
-    let tagMap = {};
-    let final = [];
-    //use for each to access the customer tag arra
-      customers.forEach(function(customer){
-        //nested forEach to access the tag array values
-        customer.tags.forEach(function(tag){
-          //map the tags with count of their usage
-          tagMap[tag] = (tagMap[tag] || 0) +1;
-        });
-      });
-    //return tagMap;
-    //now we have a tagMap to sort through within the function
-    var sorted = Object.keys(tagMap).map(function(m){
-      return [m, tagMap[m]]; //this converts object to array
-    }).sort(function(a, b){ //this sorts array using the index of the array as numerical comparisons
-      return a[1] - b[1];
-      })
-      //now we have the array in order, slice the last three to the output array
-      
-      output = sorted.slice(-3);
-      //return 
-     
-      for (var x = 0; x < output.length; x++){
-        for (var y = 0; y < output[x].length; y++){
-          if (typeof output[x][y] === 'string'){
-            final.push(output[x][y]);
-          }
-        }
-      }
-        return final;
-    
-    //return sorted; 
-    //now we have an array we can sort through since sort is an array method
+    let counter = {};
+  let final = [];
+  
+let acc = customers.reduce(function(accumulator, current){
+ for (var i = 0; i < current.tags.length; i++){
+   accumulator.push(current.tags[i]);
+ } 
+ let counter = {};
+return accumulator;
+},[]);
+  
+   acc.forEach(function(each){
+   if (counter[each]){
+     counter[each] += 1;
+   } else {
+     counter[each] = 1;
+   }
+   return counter;
+ })
+  //return counter;
+for (var key in counter){
+  final.push([key, counter[key]])
+}
+  //return final;
+let ordered = final.sort(function(a, b){
+    return b[1] - a[1];
+  })
+let done = [ordered[0][0], ordered[1][0], ordered[2][0]];
+  return done;
   };
 
 //return console.log(tags);
