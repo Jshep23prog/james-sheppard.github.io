@@ -457,6 +457,7 @@ var letterTally = function(str, obj = {}) {
   } else {
     obj[str[0]] = 1;
   }
+  return letterTally(str.slice(1), obj)
 };
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
@@ -464,7 +465,18 @@ var letterTally = function(str, obj = {}) {
 // elements should not be changed.
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
-var compress = function(list) {
+var compress = function(list, out = []) {
+  //base case
+  if (list.length === 0) {
+    return out;
+  }
+  //recursion
+  if(out[out.length - 1] === list[0]){
+    return compress(list.slice(1), out);
+  } else {
+    out.push(list[0]);
+    return compress(list.slice(1), out);
+  }
 };
 
 // 32. Augment every element in a list with a new value where each element is an array
@@ -476,7 +488,18 @@ var augmentElements = function(array, aug) {
 // 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
-var minimizeZeroes = function(array) {
+var minimizeZeroes = function(array, out = []) {
+  //base
+  if (array.length === 0){
+    return out;
+  }
+  //recursion
+  if (out[out.length - 1] === 0 && array[0] === 0){
+    return minimizeZeroes(array.slice(1), out);
+  } else {
+    out.push(array[0]);
+    return minimizeZeroes(array.slice(1), out);
+  }
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
