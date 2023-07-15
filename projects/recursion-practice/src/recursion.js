@@ -387,20 +387,23 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n, f = 1) {
+var nthFibo = function(n, f = [0, 1]) {
   //return fib number loacated at the index n 
-  if (n < 0){
+  if (n < 0) {
     return null;
   }
-  fib = [0];
-  //base case
-  if (n < 1){
-    return fib;
+  
+  //base case does n exist as an index in fib if not go to recursion and build the fib sequence
+  if (n === 0 && f.length <= 2) {
+    return 0;
+  }  
+  else if (n === 1){
+    return f[f.length -1];
   }
 //recursion
-  fib.push(f);
+  f.push(f[f.length - 1] + f[f.length -2]);
 
-  return nthFibo(n - 1, f + fib[fib.length - 1])
+  return nthFibo(n - 1, f)
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
