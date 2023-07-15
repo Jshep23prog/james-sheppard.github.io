@@ -491,12 +491,40 @@ var alternateSign = function(array) {
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str, con = []) {
   //base case 
+ //base case 
   str.split(' ')
+  //return place
   if (str.length === 0){
-    return con.join[' ']//word has a space
+    return con.join('')//word has a space
   }
-  if (str[0])
+  //if (typeof place[0] === 'number'){
+    if (str[0] === '0'){
+      con.push('zero');
+    } else if (str[0] === '1'){
+      con.push('one');
+    } else if (str[0] === '2'){
+      con.push('two');
+    } else if (str[0] === '3'){
+      con.push('three');
+    } else if (str[0] === '4'){
+      con.push('four');
+    } else if (str[0] === '5'){
+      con.push('five');
+    } else if (str[0] === '6'){
+      con.push('six');
+    } else if (str[0] === '7'){
+      con.push('seven');
+    } else if (str[0] === '8'){
+      con.push('eight');
+    } else if (str[0] === '9'){
+      con.push('nine');
+    } else {
+      con.push(str[0]);
+    }
+    //str.join(' ');
+    return numToText(str.slice(1), con)
 };
+
 
 // *** EXTRA CREDIT ***
 
