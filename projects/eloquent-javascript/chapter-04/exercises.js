@@ -143,23 +143,31 @@ function nth(list, num) {
 //Write a function deepEqual that takes two values and returns true only if they 
 //are the same value or are objects with the same properties, where the values 
 //of the properties are equal when compared with a recursive call to deepEqual.
-function deepEqual(val1, val2) {
-  
+function deepEqual(x, y) {
+  // determine if x and y are not objects
+  if (typeof x !== 'object' && typeof y !== 'object'){
+    return x === y;
+  }
+  //determine if x OR y is not an object
+  if (typeof x !== 'object' || typeof y !== 'object'){
+    return false;
+  }
+  //create arrays of each inputs keys
+  let xKeys = Object.keys(x);
+  let yKeys = Object.keys(y);
+
+  if (xKeys.length !== yKeys.length){
+    return false;
+  }
+  //iterate to determine if array keys match and values at keys match
+  for (let i = 0; i < xKeys.length; i++){
+    if(!yKeys.includes(xKeys[i]) || !deepEqual(x[xKeys[i]], y[xKeys[i]])){ //determine if current key is NOT included in yKeys
+    return false;
+    }
+  }
+return true;
 }
-// //run an if statement chain to compare various data types
-// if (val1 === val2) return true;
-// //next determine ifany values are falsey with an if conditional containg ors
-// if(val1 == null || typeof val1 != 'object' || val2 == null || typeof val2 != 'object') return false;
-// //determine if object keys length are identical
-// let keys1 = Object.keys(val1); //now is an array of keys
-// let keys2 = Object.keys(val2); //now is an array of keys
-// if (keys1.length != keys2.length) return false;
-// //next determine if values are identical for of loop
-// for (let key of keys1) {
-//   if (!keys2.includes(key) || !deepEqual(val1[key], val2[key])) return false;
-// }
-// return true;
-// //
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
