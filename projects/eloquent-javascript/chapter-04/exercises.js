@@ -133,8 +133,18 @@ return {
 //nth, which takes a list and a number and returns the element at the given position 
 //in the list (with zero referring to the first element) or undefined when there is no such element.
 function nth(list, num) {
+//base
+if (num === 0){
+  return list.value;
+}
+if (num < 0){
+  return undefined;
+}
+
+//recursion
+return nth(list.rest, num - 1);
   //this one threw me for a bit. didn't realize I had to call anothewr function
-  return listToArray(list)[num];
+  //return listToArray(list)[num];
 }
 
 ////////////////////////////////////////////////////////////////////////////////
