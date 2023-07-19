@@ -32,9 +32,20 @@ function loop(value, test, update, body) {
 // /////////////////////////////////////////////////////////////////////////////
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
-
-function every() {
-
+//Implement every as a function that takes an array and a predicate function as parameters.
+// Write two versions, one using a loop and one using the some method.
+function every(arr, func) {
+//  for (var i = 0; i < arr.length; i++){
+//   if (func(arr[i])){
+//     return true;
+//   } else{
+//   return false;
+//   }
+//  }
+for (let element of arr){
+  if (!func(element)) return false;
+}
+return true;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
