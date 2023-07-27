@@ -107,7 +107,7 @@ module.exports.last = last
 /**
  * indexOf:  Return the index of <array> that is the first occurrance of <value>
  * 
- * @param {*} array : Function takes in an input array
+ * @param {array} collection : Function takes in an input array
  * @param {*} value : Function takes in an input value
  * @returns {*} value : Function returns index of array
  */
@@ -131,9 +131,9 @@ module.exports.indexOf = indexOf
 /**
  * contains: Takes in an array and a value and checks to see if the array contains said value.
  * 
- * @param {*} array : Function takes in an input array.
+ * @param {array} collection : Function takes in an input array.
  * @param {*} value : Function takes in an input value.
- * @returns {*} boolean : Function returns true or false
+ * @returns {boolean} boolean : Function returns true or false
  */
 
 function contains(array, value) {
@@ -199,7 +199,10 @@ module.exports.unique = unique
 
 /**
  * filter: call <function> for each element in <array> passing the arguments:
-*      the element, it's index, <array>. Then return new array of elements 
+*      the element, it's index, <array>. Then return new array of elements .
+*   FILTER's primary purpose is to iterate through an array and pass each
+value into a callback function that will test if the value meets a specific condition
+ and push the elements into an array only if the callback function returns true or a truthy value
  * 
  * @param {Array} collection: The collection over which to iterate.
  * @param {Function} action: The Function to be applied to each value in the 
@@ -227,6 +230,9 @@ module.exports.filter = filter
  * reject: call <function> for each element in <array> passing the arguments:
 *      the element, it's index, <array>. Then return new array of elements 
     (the logical inverse of filter)
+    REJECT's primary purpose is to iterate through an array and pass each
+value into a callback function with a bang operator that will test if the value meets a specific condition
+ and push the elements into an array only if the callback function returns false or a falsey value
  * 
  * @param {Array} collection: The collection over which to iterate.
  * @param {Function} action: The Function to be applied to each value in the 
@@ -249,7 +255,9 @@ module.exports.reject = reject
 
 /**
  * partition: Takes in an array and passes them through a function. Returns a new nested array the first 
- *  being filled with elements that passed, the second filled with elements that failed
+ *  being filled with elements that passed, the second filled with elements that failed.
+ * It is a function that combines bot the functions of filter and reject to get the values seperated by 
+ * true/truthy and false/falsey values.
  * @param {Array} collection: The collection over which to iterate.
  * @param {Function} action: The Function to be applied to each value in the 
  * collection
@@ -281,13 +289,15 @@ module.exports.partition = partition
 
 
 /**
- * map: Takes in an array and returns a new nested array the first being filled with 
- * elements that passed, the second filled with elements that failed
+ * map: Takes in an array or object and invokes a callback function on each index or value.
+ * It will push the passing results into it's native storeage array and return said array when the 
+ * loop completes.
+ * 
  * @param {Array or Object} collection: The collection over which to iterate.
  * @param {Function} action: The Function to be applied to each value in the 
  * collection
- * @returns {Array} collection: Return an array that is the result of the map iterating
- * through the array or object and mutating tha values based on the function.
+ * @returns {Array} collection: Map returns a new array populated with the results
+ *  of passing each item into the callback function.
  */
 
 function map(collection, func) {
@@ -312,9 +322,9 @@ module.exports.map = map
 
 
 /**
- * pluck: Takes in an array and returns a new array Return an array containing the value of 
+ * pluck: Takes in an array and returns an array containing the value of 
  * <property> for every element in <array>
- * @param {Array or Object} collection: The collection over which to iterate.
+ * @param {Array} collection: The array over which to iterate.
  * @param {property} value: The Function to be applied to each value in the 
  * collection
  * @returns {Array} collection: Return an array containing the value of <property> for every element in <array>
@@ -340,6 +350,7 @@ module.exports.pluck = pluck
 *  If the return value of calling <function> for every element is true, return true, however if one of them is false,
  *  return false.
  * @param {Array or Object} collection: The collection over which to iterate.
+ * @param {function} action: The Function to be applied to each value in the collection.
  * @returns {Boolean} collection: Returns true or false 
  */
 
@@ -387,7 +398,8 @@ module.exports.every = every
 
 
 /**
- * some: Calls a function for every element of collection with different parameters that differ if it is an array or object
+ * some: Calls a function for every element of collection that returns true or false 
+ * based on a condition it's testing on the current element.
  * @param {Array or Object} collection: The collection over which to iterate.
  * @param {Function} action: If the return value for even one is true, return true 
  * @returns {Boolean} collection: Returns true or false 

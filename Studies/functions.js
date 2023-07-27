@@ -90,19 +90,31 @@ function addNum (num1, num2) {
   In JavaScript, closures are created every time a function is created, at function creation time.
   */
   
-  // function init() {
-  //   var name = "James"; // name is a local variable created by init
-  //   function displayName() {
-  //     // displayName() is the inner function, that forms the closure
-  //     console.log(name); // use variable declared in the parent function
-  //   }
-  //   displayName();
-  // }
-  // init();
+  function createStringFunc(stringOne) { // stringOne = 'Hello'
+    return function(stringTwo) { //returns a function
+      return stringOne + ' ' + stringTwo;
+    }
+  }
+
+  var helloStrings = createStringFunc('Hello'); //returns a function
+
+  var world = helloStrings('World');
+  var james = helloStrings('James')
+
+  console.log(world); // => returns 'Hello World"
+  console.log(james); // => returns 'Hello James"
   
   /** 
-  init() creates a local variable called name and a function called displayName(). 
-  The displayName() function is an inner function that is defined inside init() and is available only within the body of the init() function. 
-  Note that the displayName() function has no local variables of its own.
-   However, since inner functions have access to the variables of outer functions, displayName() can access the variable name declared
-    in the parent function, init().*/
+   * Closure always begins with a function returning a function.
+ createStringFunc is a function that takes in an arguement and returns a function
+
+ helloStrings is a variable that points at whatever createStringFunc('Hello') returns on line 93
+ Step one is invoking the outer function so you can access the inner function you want to do something with.
+
+When the second function on line 94 is returned, it is forming a closure around whatever the value of stringOne's arguement is.
+Closure is when a function that gets returned holds on to some value from a parent's function scope.
+
+Line 101 is invoked will trigger the function with the enclosed Hello.
+Even if we invoke a different arguement for stringTwo, the closure is stored in that functions memopry 
+and will happen for all perpetuity.
+ */

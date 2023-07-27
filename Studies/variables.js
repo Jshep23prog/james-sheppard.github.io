@@ -10,9 +10,14 @@
  * 1: Declaration and Assignment: To create a variable in JavaScript, you must first declare it using one of three 
  * declarative keywords: var, let, or const. 
  * 
- * 2: var, let and const:
+ * 2: var, let and const: Before ES6, var was the only way to declare variables. var is used to initialize a variable. 
+ * Post ES6, let and const were added. Let allows for reassignment of variables with the let keyword. Const is short for constant. 
+ * Variables declared with const can never be reassigned.
  * 
  * 3: Hoisting
+ * Var is the only keyword that is hoisted. When you execute your code, JS scans for var and function keywords and hoists them to the top. 
+ * This can be problematic for variables that are nested inside code blocks. This is why let and const were introduced. 
+ * let and const are only available to the local and block scopes.
  */
 //***********************************************************************************/
 // 1. Declaration and Assignemnt //
